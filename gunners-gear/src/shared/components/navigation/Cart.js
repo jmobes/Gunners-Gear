@@ -4,9 +4,7 @@ import "./Cart.css";
 
 const Cart = props => {
   return (
-    <div>
-      <i class="fas fa-shopping-cart"></i>
-    </div>
+    <i class="icon cart fas fa-shopping-cart"></i>
   );
 };
 

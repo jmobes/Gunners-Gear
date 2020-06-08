@@ -5,9 +5,7 @@ import badge from "./images/arsenal-badge-2.png";
 
 const Badge = props => {
   return(
-    <div className="badge-ctn">
-      <img src={badge} alt="Arsenal Badge" className="badge" />
-    </div>
+    <img src={badge} alt="Arsenal Badge" className="badge" />
   );
 };
 

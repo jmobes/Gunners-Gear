@@ -4,9 +4,7 @@ import "./Account.css";
 
 const Account = props => {
   return(
-    <div>
-      <i class="icon fas fa-user"></i>
-    </div>
+    <i class="icon account fas fa-user"></i>
   );
 };
 
