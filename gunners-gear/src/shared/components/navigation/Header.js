@@ -8,11 +8,14 @@ import Cart from "./Cart";
 
 const Header = props => {
   return (
-    <div>
+    <div className="header-ctn">
+      <h1 className="header-title">Gunners Gear</h1>
       <Badge />
       <Links />
-      <Account />
-      <Cart />
+      <div className="icons">
+        <Account />
+        <Cart />
+      </div>
     </div>
   );
 };

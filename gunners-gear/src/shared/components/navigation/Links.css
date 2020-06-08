@@ -1,0 +1,17 @@
+.nav {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  justify-self: center;
+  align-self: center;
+}
+.navbar {
+  list-style: none;
+  display: flex;
+}
+ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  text-transform: uppercase;
+}

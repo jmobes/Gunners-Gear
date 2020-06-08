@@ -4,28 +4,28 @@ import "./Links.css";
 
 const Links = props => {
   return (
-    <div>
-      <ul>
-        <li>
+    <nav className="nav">
+      <ul className="navbar">
+        <li className="nav-item">
           <a href="#">accessories</a>
         </li>
-        <li>
+        <li className="nav-item">
           <a href="#">players</a>
         </li>
-        <li>
+        <li className="nav-item">
           <a href="#">jerseys</a>
         </li>
-        <li>
+        <li className="nav-item">
           <a href="#">shorts</a>
         </li>
-        <li>
+        <li className="nav-item">
           <a href="#">jackets</a>
         </li>
-        <li>
+        <li className="nav-item">
           <a href="#">sweats</a>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 };
 

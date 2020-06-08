@@ -1,0 +1,27 @@
+.header-ctn {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 50% 50%;
+  height: 20%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+}
+.header-title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-self: center;
+  justify-self: center;
+  font-size: 3rem;
+  color: rgb(218,0,33);
+}
+.icons {
+  justify-self: end;
+  align-self: center;
+  font-size: 1.5rem;
+}
+.icons > * {
+  padding: 1rem;
+}
+.icons:last-child {
+  margin-right: 3rem;
+}
