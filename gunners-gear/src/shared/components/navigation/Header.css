@@ -12,10 +12,15 @@
   align-self: center;
   justify-self: center;
   font-size: 3rem;
+}
+.word-1 {
   color: rgb(218,0,33);
 }
+.word-2 {
+  color: rgb(8,22,95);
+}
 .icons {
-  justify-self: end;
+  justify-self: start;
   align-self: center;
   font-size: 1.5rem;
 }
@@ -24,4 +29,11 @@
 }
 .icons:last-child {
   margin-right: 3rem;
+}
+.border {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  height: 3px;
+  align-self: flex-end;
+  background-color: rgb(218,0,33);
 }

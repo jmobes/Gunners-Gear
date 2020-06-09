@@ -7,13 +7,13 @@ const Links = props => {
     <nav className="nav">
       <ul className="navbar">
         <li className="nav-item">
-          <a href="#">accessories</a>
+          <a href="#">jerseys</a>
         </li>
         <li className="nav-item">
           <a href="#">players</a>
         </li>
         <li className="nav-item">
-          <a href="#">jerseys</a>
+          <a href="#">sweats</a>
         </li>
         <li className="nav-item">
           <a href="#">shorts</a>
@@ -22,7 +22,7 @@ const Links = props => {
           <a href="#">jackets</a>
         </li>
         <li className="nav-item">
-          <a href="#">sweats</a>
+          <a href="#">accessories</a>
         </li>
       </ul>
     </nav>
