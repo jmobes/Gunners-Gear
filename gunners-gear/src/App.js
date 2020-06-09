@@ -1,9 +1,9 @@
 import React from "react";
 
-import Header from "./shared/components/navigation/Header";
+import FrontPage from "../src/FrontPage/FrontPage";
 
 const App = props => {
- return <Header />;
+ return <FrontPage />;
 };
 
 export default App;

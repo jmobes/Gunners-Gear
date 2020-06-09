@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  margin: auto;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.5rem;
+  grid-template-areas: "img-1 img-1 img-1"
+                       "img-2 img-3 img-4"
+                       "img-5 img-5 img-5";
+}
+.gallery div {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img-1 {
+  grid-area: img-1;
+  background-image: url("./images/stadium-1.jpg");
+  background-position: bottom;
+  height: 75vh;
+}
+.img-2 {
+  grid-area: img-2;
+  background-image: url("./images/jersey-hot.jpg");
+  height: 30rem;
+}
+.img-3 {
+  grid-area: img-3;
+  background-image: url("./images/arsenal-ball-2.jpeg");
+  height: 30rem;
+}
+.img-4 {
+  grid-area: img-4;
+  background-image: url("./images/arsenal-statue.jpeg");
+  height: 30rem;
+}
+.img-5 {
+  grid-area: img-5;
+  background-image: url("./images/arsenal-footer-2.jpg");
+  height: 50vh;
+}

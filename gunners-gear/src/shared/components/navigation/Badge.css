@@ -3,5 +3,5 @@
   width: 100px;
   grid-row: 1/2;
   grid-column: 1/2;
-  justify-self: center;
+  justify-self: end;
 }
