@@ -10,8 +10,8 @@ import mug from "./images/mug.png";
 import scarf from "./images/scarf.png";
 import hat from "./images/hat.png";
 
-import Header from "../shared/components/Header/Header";
-import Footer from "../shared/components/Footer/Footer";
+import Header from "../../shared/components/Header/Header";
+import Footer from "../../shared/components/Footer/Footer";
 
 const FrontPage = props => {
   return (
