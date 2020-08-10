@@ -1,0 +1,169 @@
+.button {
+  padding: 2rem 3rem;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  background-color: var(--color-red-primary);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  box-shadow: 0 5px 10px rgba(0,0,0,.7);
+}
+.button:hover {
+  background-color: var(--color-red-three);
+  cursor: pointer;
+}
+
+.stadium_ctn {
+  height: 75vh;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgb(0,0,0,.7);
+  position: relative;
+}
+.stadium_ctn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 3s;
+  background-color: var(--color-blue-primary);
+}
+.stadium_ctn:hover::after {
+  opacity: .7;
+}
+.stadium {
+  background-image: url(../FrontPage//images/stadium.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.stadium__paragraph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: var(--color-red-primary);
+  border-radius: 20px;
+  letter-spacing: 2px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 2s;
+  z-index: 10;
+}
+.stadium_ctn:hover .stadium__paragraph {
+  opacity: 1;
+}
+
+.gallery {
+  padding: 3rem 0;
+  box-shadow: 0 5px 10px rgb(0,0,0, .7);
+  margin: 3rem 0;
+}
+.gallery__heading {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 10rem;
+  background-image: linear-gradient(
+    to right,
+    var(--color-red-primary),
+    var(--color-blue-primary)
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.gallery_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-red-secondary);
+}
+.gallery_item_ctn {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-blue-primary);
+  margin: 1rem;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+}
+.gallery__item {
+  width: 90%;
+  padding: 1rem;
+}
+.gallery_item__button {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .2s;
+}
+.gallery_item_ctn:hover .gallery_item__button {
+  opacity: 1;
+}
+.gallery_item__button:hover {
+  cursor: pointer;
+}
+.gallery_item__button:active {
+  top: 51%;
+  box-shadow: 0 2.5px 5px rgba(0,0,0,.7);
+}
+.story {
+  padding: 3rem;
+  display: flex;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.7);
+  margin-bottom: 3rem;
+}
+.story__text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+.story__text--header {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+.story__text--paragraph {
+  margin: 4rem 0;
+  font-size: 3rem;
+}
+.story__button {
+  transition: all .2s;
+  align-self: center;
+}
+.story__button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2.5px 5px rgba(0,0,0,.7);
+}
+.story__photos {
+  width: 100%;
+  background-color: var(--color-blue-primary);
+  text-align: center;
+}
+.story__photos--1, .story__photos--2, .story__photos--3 {
+  width: 40%;
+  outline-offset: 2rem;
+}
+.story__photos--1:hover, .story__photos--2:hover, .story__photos--3:hover {
+  outline: 1.5rem solid var(--color-blue-secondary);
+  transform: scale(1.05);
+  transition: all .2s;
+}
+
+.wallpaper {
+  background-image: url("./images/wallpaper.jpg");
+  width: 100%;
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+}
