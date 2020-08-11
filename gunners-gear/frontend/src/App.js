@@ -23,7 +23,7 @@ const App = props => {
          <Players />
        </Route>
      </Switch>
-     <Redirect to="/players" />
+     <Redirect to="/jerseys" />
      <Footer />
    </Router>
  );
