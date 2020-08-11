@@ -1,9 +1,11 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
-import FrontPage from "../src/pages/FrontPage/FrontPage";
-import Header from "../src/shared/components/Header/Header";
-import Footer from "../src/shared/components/Footer/Footer";
+import FrontPage from "./pages/FrontPage/FrontPage";
+import Header from "./shared/components/Header/Header";
+import Footer from "./shared/components/Footer/Footer";
+import Jerseys from "./pages/Jerseys/Jerseys";
+import Players from "./pages/Players/Players";
 
 
 const App = props => {
@@ -14,8 +16,14 @@ const App = props => {
        <Route path="/" exact>
          <FrontPage />
        </Route>
+       <Route path="/jerseys" exact>
+         <Jerseys />
+       </Route>
+       <Route path="/players" exact>
+         <Players />
+       </Route>
      </Switch>
-     <Redirect to="/" />
+     <Redirect to="/jerseys" />
      <Footer />
    </Router>
  );

@@ -38,9 +38,6 @@ const Header = props => {
           <Link className="nav_list__item" to="/jackets">
             <li>Jackets</li>
           </Link>
-          <Link className="nav_list__item" to="/sweats">
-            <li>Sweats</li>
-          </Link>
           <Link className="nav_list__item" to="/accessories">
             <li>Accessories</li>
           </Link>
