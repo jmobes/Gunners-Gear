@@ -16,7 +16,7 @@ const Jersey = () => {
       <div className="jersey__card">
         <img className="jersey__card__image" src={blackJersey}></img>
         <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Alternate Color Away Long Sleeve Jersey</h3>
+          <h3 className="jersey__card__title">Alternate Color Long Sleeve Jersey</h3>
           <h4 className="jersey__card__price">$50</h4>
           <button className="jersey__card__button">Add to Cart</button>
         </div>
@@ -24,7 +24,7 @@ const Jersey = () => {
       <div className="jersey__card">
         <img className="jersey__card__image" src={blueJersey}></img>
         <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Alternate Color Away Long Sleeve Jersey</h3>
+          <h3 className="jersey__card__title">Away Long Sleeve Jersey</h3>
           <h4 className="jersey__card__price">$50</h4>
           <button className="jersey__card__button">Add to Cart</button>
         </div>
