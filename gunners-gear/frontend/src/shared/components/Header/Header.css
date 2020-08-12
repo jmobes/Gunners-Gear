@@ -1,5 +1,6 @@
 .header {
   width: 100%;
+  padding: 2rem;
 
   display: grid;
   grid-template-rows: 50px 50px;
@@ -31,6 +32,7 @@
   font-size: 4rem;
   grid-row: 1 / 2;
   grid-column: 2 / span 4;
+  letter-spacing: 1.5rem;
 }
 .first-word {
   color: var(--color-red-secondary);
@@ -43,6 +45,7 @@
   display: block;
   height: 3px;
   background-color: var(--color-red-primary);
+  margin-top: 1rem;
 }
 .header__icons {
   display: flex;
