@@ -6,6 +6,8 @@ import Header from "./shared/components/Header/Header";
 import Footer from "./shared/components/Footer/Footer";
 import Jerseys from "./pages/Jerseys/Jerseys";
 import Players from "./pages/Players/Players";
+import Shorts from "./pages/Shorts/Shorts";
+import Jackets from "./pages/Jackets/Jackets";
 
 
 const App = props => {
@@ -22,8 +24,17 @@ const App = props => {
        <Route path="/players" exact>
          <Players />
        </Route>
+       <Route path="/shorts" exact>
+         <Shorts />
+       </Route>
+       <Route path="/jackets" exact>
+         <Jackets />
+       </Route>
+       <Route path="/accessories" exact>
+         <Players />
+       </Route>
      </Switch>
-     <Redirect to="/jerseys" />
+     <Redirect to="/jackets" />
      <Footer />
    </Router>
  );
