@@ -1,20 +1,20 @@
-.jerseys-container {
+.jackets-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 3rem;
   padding: 5rem;
 }
-.jersey__card {
+.jackets__card {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto-fit);
   box-shadow: 0 5px 10px rgba(0,0,0,.7);
   text-transform: uppercase;
 }
-.jersey__card__image {
+.jackets__card__image {
   justify-self: center;
 }
-.jersey__card__details {
+.jackets__card__details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, auto-fit);
@@ -25,20 +25,20 @@
   /* padding: 2rem; */
   grid-row-gap: 1.5rem;
 }
-.jersey__card__title {
+.jackets__card__title {
   font-size: 2.5rem;
   text-align: center;
   color: rgba(119,119,119);
   grid-area: title;
 }
-.jersey__card__price {
+.jackets__card__price {
   font-size: 3rem;
   text-align: center;
   color: var(--color-red-primary);
   grid-area: price;
   align-self: center;
 }
-.jersey__card__button {
+.jackets__card__button {
   padding: 1rem;
   grid-area: button;
   border: none;
@@ -48,7 +48,7 @@
   background-color: var(--color-red-primary);
   color: #fff;
 }
-.jersey__card__button:hover {
+.jackets__card__button:hover {
   background-color: var(--color-red-three);
   cursor: pointer;
 }
