@@ -8,6 +8,10 @@ import Jerseys from "./pages/Jerseys/Jerseys";
 import Players from "./pages/Players/Players";
 import Shorts from "./pages/Shorts/Shorts";
 import Jackets from "./pages/Jackets/Jackets";
+import Accessories from "./pages/Accessories/Accessories";
+import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
+import Retro from "./pages/Vintage/Vintage";
+import Vintage from "./pages/Vintage/Vintage";
 
 
 const App = props => {
@@ -31,10 +35,16 @@ const App = props => {
          <Jackets />
        </Route>
        <Route path="/accessories" exact>
-         <Players />
+         <Accessories />
+       </Route>
+       <Route path="/soccerballs" exact>
+         <SoccerBalls />
+       </Route>
+       <Route path="/vintage" exact>
+         <Vintage />
        </Route>
      </Switch>
-     <Redirect to="/jackets" />
+     <Redirect to="/" />
      <Footer />
    </Router>
  );

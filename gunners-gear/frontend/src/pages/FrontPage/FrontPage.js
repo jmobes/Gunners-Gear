@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 import "./FrontPage.css";
 
@@ -28,15 +29,21 @@ const FrontPage = props => {
           <div className="gallery_links">
             <div className="gallery_item_ctn gallery_item_ctn--1">
               <img className="gallery__item gallery__item--1" src={jersey}></img>
-              <button class="gallery_item__button button">Most Popular</button>
+              <Link to="/jerseys">
+                <button class="gallery_item__button button">Most Popular</button>
+              </Link>
             </div>
             <div className="gallery_item_ctn gallery_item_ctn--2">
               <img className="gallery__item gallery__item--2" src={ball}></img>
-              <button class="gallery_item__button button">Soccer Balls</button>
+              <Link to="/soccerballs">
+                <button class="gallery_item__button button">Soccer Balls</button>
+              </Link>
             </div>
             <div className="gallery_item_ctn gallery_item_ctn--3">
               <img className="gallery__item gallery__item--3" src={vintage}></img>
-              <button class="gallery_item__button button">Vintage</button>
+              <Link to="/vintage">
+                <button class="gallery_item__button button">Vintage</button>
+              </Link>
             </div>
           </div>
         </section>
@@ -46,7 +53,9 @@ const FrontPage = props => {
               Select from a wide variety of items
             </h3>
             <p className="story__text--paragraph">Check out our new home and away kit for the 2020/2021 season.</p>
-            <button className="story__button button">SHOP NOW</button>
+            <Link to="/players">
+              <button className="story__button button">SHOP NOW</button>
+            </Link>
           </div>
           <div className="story__photos">
             <img className="story__photos--1" src={mug}></img>

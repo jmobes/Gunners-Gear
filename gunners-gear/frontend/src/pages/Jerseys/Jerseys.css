@@ -22,7 +22,6 @@
   "title title"
   "price price"
   "button button";
-  /* padding: 2rem; */
   grid-row-gap: 1.5rem;
 }
 .jersey__card__title {
