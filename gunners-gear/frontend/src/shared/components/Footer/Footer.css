@@ -29,9 +29,10 @@
   font-size: 2rem;
   margin-right: 3rem;
 }
-.icon {
-  width: 2rem;
+.icon-github {
+  margin-right: 1rem;
 }
 .icon-github, .icon-linkedin {
   fill: #fff;
+  width: 2rem;
 }

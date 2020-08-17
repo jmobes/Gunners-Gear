@@ -46,6 +46,7 @@
   display: block;
   height: 3px;
   background-color: var(--color-red-primary);
+  margin-top: .5rem;
 }
 .header__icons {
   display: flex;
@@ -92,9 +93,6 @@
   .logo_ctn {
     justify-self: start;
   }
-  .header__icons {
-    justify-self: center;
-  }
 }
 @media (max-width: 840px) {
   .header__title {
@@ -129,15 +127,18 @@
 @media (max-width: 635px) {
   .header {
     grid-template-columns: 75px 1fr;
+    grid-auto-rows: min-content;
   }
   .header__title {
     grid-row: 1 / -1;
     grid-column: 2 / -1;
+    letter-spacing: .5rem;
+    align-self: center;
   }
   .logo_ctn {
     grid-row: 1 / -1;
     grid-column: 1 / 2;
-    align-self: center;
+    align-self: end;
   }
   .header__icons, .nav_links {
     display: none
@@ -148,13 +149,13 @@
     fill: var(--color-blue-primary);
     transition: all .2s;
     justify-self: center;
-    align-self: center;
+    align-self: start;
   }
   .menu:hover {
     fill: var(--color-red-primary);
   }
   .icon-menu {
-    height: 2rem;
+    height: 3rem;
   }
 
 }
@@ -167,5 +168,13 @@
   }
   .icon-menu {
     height: 3rem;
+  }
+}
+@media (max-width: 400px) {
+  .header__title {
+    font-size: 2rem;
+  }
+  .icon-menu {
+    height: 2rem;
   }
 }
