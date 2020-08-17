@@ -43,6 +43,11 @@ const Header = props => {
           </Link>
         </ul>
       </nav>
+      <div className="menu">
+        <svg className="icon icon-menu">
+          <use href={sprite + "#menu"}></use>
+        </svg>
+      </div>
     </header>
   );
 };
