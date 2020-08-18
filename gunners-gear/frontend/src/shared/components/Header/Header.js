@@ -20,6 +20,9 @@ const Header = props => {
         <svg className="icon icon-user">
           <use href={sprite + "#user"}></use>
         </svg>
+        <svg className="icon icon-menu">
+          <use href={sprite + "#menu"}></use>
+        </svg>
         <svg className="icon icon-cart">
           <use href={sprite + "#shopping-cart"}></use>
         </svg>
@@ -43,11 +46,11 @@ const Header = props => {
           </Link>
         </ul>
       </nav>
-      <div className="menu">
+      {/* <div className="menu">
         <svg className="icon icon-menu">
           <use href={sprite + "#menu"}></use>
         </svg>
-      </div>
+      </div> */}
     </header>
   );
 };
