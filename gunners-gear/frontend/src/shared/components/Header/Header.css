@@ -1,4 +1,8 @@
+.header_ctn {
+  /* position: relative; */
+}
 .header {
+  /* position: relative; */
   width: 100%;
   padding: 2rem;
 
@@ -50,15 +54,30 @@
 }
 .header__icons {
   display: flex;
+  justify-content: space-evenly;
+}
+.cart-container {
+  position: relative;
+}
+.cart__num-ctn {
+  position: absolute;
+  top: 4.5rem;
+  right: -1rem;
+  background-color: red;
+  border-radius: 100px;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
 }
 .icon-user, .icon-cart, .icon-menu {
-  height: 2rem;
+  /* height: 2rem; */
+  width: 2rem;
   fill: var(--color-blue-primary);
   transition: all .2s ease;
 }
 .icon-user:hover, .icon-cart:hover, .icon-menu:hover {
   cursor: pointer;
-  fill: var(--color-red-secondary);
+  fill: var(--color-blue-secondary);
 }
 
 .nav_links {
@@ -121,6 +140,10 @@
   }
   .icon-user, .icon-cart, .icon-menu {
     height: 1.8rem;
+  }
+  .cart__num-ctn {
+    top: -2rem;
+    right: -1rem;
   }
 }
 @media (max-width: 635px) {
