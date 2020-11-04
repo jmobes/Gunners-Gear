@@ -150,6 +150,7 @@
   width: 100%;
   background-color: var(--color-blue-primary);
   text-align: center;
+  padding: 5rem;
 }
 .story__photos--1, .story__photos--2, .story__photos--3 {
   width: 40%;
@@ -193,6 +194,13 @@
     font-size: 4rem;
   }
 }
+@media (max-width: 992px) {
+  .gallery_links .gallery_item_ctn .gallery_item__button {
+    position: absolute;
+    top: 70%;
+    opacity: 1;
+  }
+}
 @media (max-width: 900px) {
   .gallery__heading {
     font-size: 8rem;
@@ -231,11 +239,28 @@
     font-size: 7rem;
   }
 }
+@media (max-width: 635px) {
+  /* .stadium_ctn {
+    height: 70vh;
+  } */
+}
 @media (max-width: 530px) {
   .gallery__heading {
     font-size: 6rem;
   }
   .gallery_links {
     flex-direction: column;
+  }
+  .button {
+    padding: 1rem 1.5rem;
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 430px) {
+  .gallery__heading {
+    font-size: 4rem;
+  }
+  .story__text--header {
+    font-size: 4rem;
   }
 }

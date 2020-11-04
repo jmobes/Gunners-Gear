@@ -37,17 +37,3 @@
   grid-area: price;
   align-self: center;
 }
-.jersey__card__button {
-  padding: 1rem;
-  grid-area: button;
-  border: none;
-  background-color: #fff;
-  outline: none;
-  font-size: 2.5rem;
-  background-color: var(--color-red-primary);
-  color: #fff;
-}
-.jersey__card__button:hover {
-  background-color: var(--color-red-three);
-  cursor: pointer;
-}

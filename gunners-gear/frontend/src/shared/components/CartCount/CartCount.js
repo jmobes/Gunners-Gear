@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./CartCount.css";
 
-const CartCount = () => {
+const CartCount = (props) => {
+
   return (
-    <p className="cart__num-val">0</p>
+  <p className="cart__num-val">{0}</p>
   );
 };
 

@@ -14,7 +14,7 @@ import Retro from "./pages/Vintage/Vintage";
 import Vintage from "./pages/Vintage/Vintage";
 
 
-const App = props => {
+const App = () => {
  return (
    <Router>
      <Header />

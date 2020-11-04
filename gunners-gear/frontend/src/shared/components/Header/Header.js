@@ -8,6 +8,8 @@ import logo from "./images/logo.png";
 import sprite from "../../../images/sprites.svg";
 
 const Header = props => {
+  const itemCount = props.itemCount;
+
   return (
     <header className="header_container">
       <div className="header">
@@ -30,7 +32,7 @@ const Header = props => {
               <use href={sprite + "#shopping-cart"}></use>
             </svg>
             <div className="cart__num-ctn">
-              <CartCount />
+              <CartCount itemCount={itemCount} />
             </div>
           </div>
         </div>
@@ -54,11 +56,6 @@ const Header = props => {
           </ul>
         </nav>
       </div>
-      {/* <div className="menu">
-        <svg className="icon icon-menu">
-          <use href={sprite + "#menu"}></use>
-        </svg>
-      </div> */}
     </header>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Players.css";
 
+import CardButton from "../../shared/components/CardButton/CardButton";
+
 import aubameyang from "./images/aubameyang.png";
 import bellerin from "./images/bellerin.png";
 import lacazette from "./images/lacazette.png";
@@ -29,7 +31,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">Gabon</h4>
           <h4 className="player__card__number">14</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -42,7 +44,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Spain</h4>
           <h4 className="player__card__number">2</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -55,7 +57,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">France</h4>
           <h4 className="player__card__number">9</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -68,7 +70,7 @@ const Players = () => {
           <h4 className="player__card__position">Goalkeeper</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">1</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -81,7 +83,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Brazil</h4>
           <h4 className="player__card__number">23</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -94,7 +96,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">20</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -107,7 +109,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">10</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -120,7 +122,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">France</h4>
           <h4 className="player__card__number">19</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -133,7 +135,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">England</h4>
           <h4 className="player__card__number">77</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -146,7 +148,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Scottland</h4>
           <h4 className="player__card__number">3</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -159,7 +161,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">Switzerland</h4>
           <h4 className="player__card__number">34</h4>
-          <button className="player__card__button">Add Jersey to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
     </section>
