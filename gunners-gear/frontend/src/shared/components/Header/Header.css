@@ -1,4 +1,8 @@
+.header_ctn {
+  /* position: relative; */
+}
 .header {
+  /* position: relative; */
   width: 100%;
   padding: 2rem;
 
@@ -50,16 +54,30 @@
 }
 .header__icons {
   display: flex;
+  justify-content: space-evenly;
 }
-.icon-user, .icon-cart {
+.cart-container {
+  position: relative;
+}
+.cart__num-ctn {
+  position: absolute;
+  top: 4.5rem;
+  right: -1rem;
+  background-color: red;
+  border-radius: 100px;
+  color: #fff;
+  width: 2rem;
   height: 2rem;
+}
+.icon-user, .icon-cart, .icon-menu {
+  /* height: 2rem; */
+  width: 2rem;
   fill: var(--color-blue-primary);
-  margin: 0 1rem;
   transition: all .2s ease;
 }
-.icon-user:hover, .icon-cart:hover {
+.icon-user:hover, .icon-cart:hover, .icon-menu:hover {
   cursor: pointer;
-  fill: var(--color-red-secondary);
+  fill: var(--color-blue-secondary);
 }
 
 .nav_links {
@@ -85,7 +103,7 @@
 .nav_list__item:hover {
   border-bottom: 3px solid var(--color-blue-primary);
 }
-.menu {
+.icon-menu {
   display: none;
 }
 
@@ -120,8 +138,12 @@
   .logo_ctn {
     width: 75px;
   }
-  .icon-user, .icon-cart {
-    height: 1.5rem;
+  .icon-user, .icon-cart, .icon-menu {
+    height: 1.8rem;
+  }
+  .cart__num-ctn {
+    top: -2rem;
+    right: -1rem;
   }
 }
 @media (max-width: 635px) {
@@ -140,24 +162,19 @@
     grid-column: 1 / 2;
     align-self: end;
   }
-  .header__icons, .nav_links {
-    display: none
-  }
-  .menu {
-    display: block;
+  .header__icons {
     grid-column: 1 / -1;
-    fill: var(--color-blue-primary);
-    transition: all .2s;
-    justify-self: center;
-    align-self: start;
-  }
-  .menu:hover {
-    fill: var(--color-red-primary);
+    grid-row: 3 / 4;
   }
   .icon-menu {
-    height: 3rem;
+    display: block;
   }
-
+  .icon-cart, .icon-user, .icon-menu {
+    height: 2rem;
+  }
+  .nav_links {
+    display: none;
+  }
 }
 @media (max-width: 560px) {
   .header {
@@ -166,15 +183,12 @@
   .header__title {
     font-size: 3rem;
   }
-  .icon-menu {
-    height: 3rem;
-  }
 }
 @media (max-width: 400px) {
   .header__title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .icon-menu {
-    height: 2rem;
+    height: 2.5rem;
   }
 }

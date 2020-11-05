@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Vintage.css";
 
+import CardButton from "../../shared/components/CardButton/CardButton";
+
 import retroHat from "./images/retro-hat.jpeg";
 import retroJerseyRed from "./images/retro-jersey-red.jpeg";
 import retroJerseyYellow from "./images/retro-jersey-yellow.jpeg";
@@ -17,7 +19,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens training black vintage</h3>
           <h4 className="vintage__card__price">$40</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -25,7 +27,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Training warmers black</h3>
           <h4 className="vintage__card__price">$35</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -33,7 +35,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Training warmers brown</h3>
           <h4 className="vintage__card__price">$35</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -41,7 +43,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens arsenal golf vintage</h3>
           <h4 className="vintage__card__price">$30</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -49,7 +51,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens home color vintage</h3>
           <h4 className="vintage__card__price">$40</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -57,7 +59,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens arsenal swimming trunks</h3>
           <h4 className="vintage__card__price">$30</h4>
-          <button className="vintage__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
     </section>

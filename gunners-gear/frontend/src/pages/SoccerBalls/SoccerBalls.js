@@ -2,6 +2,8 @@ import React from "react";
 
 import "./SoccerBalls.css";
 
+import CardButton from "../../shared/components/CardButton/CardButton";
+
 import ballBlack from "./images/ball-black.png";
 import ballKids from "./images/ball-kids.png";
 import ballRed1 from "./images/ball-red-1.jpeg";
@@ -16,7 +18,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens training black ball</h3>
           <h4 className="ball__card__price">$40</h4>
-          <button className="ball__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -24,7 +26,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Training warmers black</h3>
           <h4 className="ball__card__price">$35</h4>
-          <button className="ball__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -32,7 +34,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens arsenal golf ball</h3>
           <h4 className="ball__card__price">$30</h4>
-          <button className="ball__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -40,7 +42,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens home color ball</h3>
           <h4 className="ball__card__price">$40</h4>
-          <button className="ball__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -48,7 +50,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens arsenal swimming trunks</h3>
           <h4 className="ball__card__price">$30</h4>
-          <button className="ball__card__button">Add to Cart</button>
+          <CardButton className="card__button" />
         </div>
       </div>
     </section>
