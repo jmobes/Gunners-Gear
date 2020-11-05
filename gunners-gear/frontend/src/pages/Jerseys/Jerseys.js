@@ -19,7 +19,7 @@ const Jersey = (props) => {
       <div className="jersey__card">
         <img className="jersey__card__image" src={blackJersey}></img>
         <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Alternate Color Long Sleeve Jersey</h3>
+          <h3 className="jersey__card__title">Black Goalkeeper Jersey</h3>
           <h4 className="jersey__card__price">$80</h4>
           <CardButton className="card__button" />
         </div>
