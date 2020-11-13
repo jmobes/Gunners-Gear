@@ -1,0 +1,266 @@
+.button {
+  padding: 2rem 3rem;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  background-color: var(--color-red-primary);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  box-shadow: 0 5px 10px rgba(0,0,0,.7);
+}
+.button:hover {
+  background-color: var(--color-red-three);
+  cursor: pointer;
+}
+
+.stadium_ctn {
+  height: 75vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.stadium_ctn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 3s;
+  background-color: var(--color-blue-primary);
+}
+.stadium_ctn:hover::after {
+  opacity: .7;
+}
+.stadium {
+  background-image: url(../FrontPage//images/banner.JPG);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+}
+.stadium__paragraph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 2px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 2s;
+  z-index: 10;
+  padding: 1rem;
+}
+.stadium_ctn:hover .stadium__paragraph {
+  opacity: 1;
+}
+
+.gallery {
+  box-shadow: 0 5px 10px rgb(0,0,0, .7);
+  margin: 3rem 0;
+  font-family: "Arsenal", sans-serif;
+}
+.gallery__heading {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 10rem;
+  background-image: linear-gradient(
+    to right,
+    var(--color-red-primary),
+    var(--color-blue-primary)
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding: 1rem;
+}
+.gallery_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-red-secondary);
+}
+.gallery_item_ctn {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-blue-primary);
+  margin: 1rem;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+}
+.gallery__item {
+  width: 90%;
+  padding: 1rem;
+}
+.gallery_item__button {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .2s;
+}
+.gallery_item_ctn:hover .gallery_item__button {
+  opacity: 1;
+}
+.gallery_item__button:hover {
+  cursor: pointer;
+}
+.gallery_item__button:active {
+  top: 51%;
+  box-shadow: 0 2.5px 5px rgba(0,0,0,.7);
+}
+.story {
+  display: flex;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.7);
+  margin-bottom: 3rem;
+  font-family: "Arsenal", sans-serif;
+}
+.story__text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+  padding: 3rem;
+}
+.story__text--header {
+  font-size: 8rem;
+  text-transform: uppercase;
+}
+.story__text--paragraph {
+  margin: 4rem 0;
+  font-size: 3rem;
+}
+.story__button {
+  transition: all .2s;
+  align-self: center;
+}
+.story__button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2.5px 5px rgba(0,0,0,.7);
+}
+.story__photos {
+  width: 100%;
+  background-color: var(--color-blue-primary);
+  text-align: center;
+  padding: 5rem;
+}
+.story__photos--1, .story__photos--2, .story__photos--3 {
+  width: 40%;
+  outline-offset: 2rem;
+}
+.story__photos--1:hover, .story__photos--2:hover, .story__photos--3:hover {
+  outline: 1.5rem solid var(--color-red-secondary);
+  transform: scale(1.05);
+  transition: all .2s;
+}
+
+.wallpaper {
+  background-image: url("./images/wallpaper.jpg");
+  width: 100%;
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 1200px) {
+  .story {
+    flex-direction: column;
+  }
+  .story__text--header {
+    font-size: 7rem;
+  }
+  .story__text {
+    margin: 0 0 2rem 0;
+  }
+  .story__photos {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .story__photos--1, .story__photos--2, .story__photos--3 {
+    width: 25%;
+    outline-offset: 1rem;
+  }
+}
+@media (max-width: 1050px) {
+  .stadium__paragraph {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 992px) {
+  .gallery_links .gallery_item_ctn .gallery_item__button {
+    position: absolute;
+    top: 70%;
+    opacity: 1;
+  }
+}
+@media (max-width: 900px) {
+  .gallery__heading {
+    font-size: 8rem;
+    text-align: center;
+  }
+  .gallery_links {
+    flex-direction: column;
+    background-color: var(--color-red-primary);
+  }
+  .gallery_item_ctn {
+    width: 70%;
+  }
+  .gallery__item {
+    width: 60%;
+  }
+  .story__photos {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .stadium__paragraph {
+    font-size: 3rem;
+  }
+  .gallery_item_ctn {
+    width: 90%;
+  }
+  .gallery__item {
+    width: 60%;
+  }
+  .story__text--header {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 700px) {
+  .gallery__heading {
+    font-size: 7rem;
+  }
+}
+@media (max-width: 635px) {
+  /* .stadium_ctn {
+    height: 70vh;
+  } */
+}
+@media (max-width: 530px) {
+  .gallery__heading {
+    font-size: 6rem;
+  }
+  .gallery_links {
+    flex-direction: column;
+  }
+  .button {
+    padding: 1rem 1.5rem;
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 430px) {
+  .gallery__heading {
+    font-size: 4rem;
+  }
+  .story__text--header {
+    font-size: 4rem;
+  }
+}
