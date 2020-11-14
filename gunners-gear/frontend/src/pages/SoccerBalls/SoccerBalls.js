@@ -10,7 +10,7 @@ import ballRed1 from "./images/ball-red-1.jpeg";
 import ballRed2 from "./images/ball-red-2.png";
 import ballYellow from "./images/ball-yellow.png";
 
-const SoccerBalls = () => {
+const SoccerBalls = (props) => {
   return (
     <section className="ball-container">
       <div className="ball__card">
@@ -18,7 +18,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens training black ball</h3>
           <h4 className="ball__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -26,7 +26,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Training warmers black</h3>
           <h4 className="ball__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -34,7 +34,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens arsenal golf ball</h3>
           <h4 className="ball__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -42,7 +42,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens home color ball</h3>
           <h4 className="ball__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="ball__card">
@@ -50,7 +50,7 @@ const SoccerBalls = () => {
         <div className="ball__card__details">
           <h3 className="ball__card__title">Mens arsenal swimming trunks</h3>
           <h4 className="ball__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
     </section>

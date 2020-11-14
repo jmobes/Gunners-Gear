@@ -11,7 +11,7 @@ import jacketSleeveless from "./images/jacket-sleeveless.png";
 import redJacket from "./images/red-jacket.png";
 import windbreaker from "./images/windbreaker.png";
 
-const Jackets = () => {
+const Jackets = (props) => {
   return (
     <section className="jackets-container">
       <div className="jackets__card">
@@ -19,7 +19,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Men's black jacket</h3>
           <h4 className="jackets__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="jackets__card">
@@ -27,7 +27,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Gray jacket</h3>
           <h4 className="jackets__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="jackets__card">
@@ -35,7 +35,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Black padded jacket</h3>
           <h4 className="jackets__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="jackets__card">
@@ -43,7 +43,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Sleeveless black jacket</h3>
           <h4 className="jackets__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="jackets__card">
@@ -51,7 +51,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Mens home colors jacket</h3>
           <h4 className="jackets__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="jackets__card">
@@ -59,7 +59,7 @@ const Jackets = () => {
         <div className="jackets__card__details">
           <h3 className="jackets__card__title">Windbreaker / Training jacket</h3>
           <h4 className="jackets__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
     </section>

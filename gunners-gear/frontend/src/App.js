@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 import FrontPage from "./pages/FrontPage/FrontPage";
@@ -15,38 +15,44 @@ import Vintage from "./pages/Vintage/Vintage";
 
 
 const App = () => {
+  const [itemCount, setItemCount] = useState(0);
+
+  const addItemToCart = () => {
+    setItemCount(itemCount + 1);
+  };
+
  return (
-   <Router>
-     <Header />
-     <Switch>
-       <Route path="/" exact>
-         <FrontPage />
-       </Route>
-       <Route path="/jerseys" exact>
-         <Jerseys />
-       </Route>
-       <Route path="/players" exact>
-         <Players />
-       </Route>
-       <Route path="/shorts" exact>
-         <Shorts />
-       </Route>
-       <Route path="/jackets" exact>
-         <Jackets />
-       </Route>
-       <Route path="/accessories" exact>
-         <Accessories />
-       </Route>
-       <Route path="/soccerballs" exact>
-         <SoccerBalls />
-       </Route>
-       <Route path="/vintage" exact>
-         <Vintage />
-       </Route>
-     </Switch>
-     <Redirect to="/" />
-     <Footer />
-   </Router>
+  <Router>
+    <Header count={itemCount} />
+    <Switch>
+      <Route path="/" exact>
+        <FrontPage />
+      </Route>
+      <Route path="/jerseys" exact>
+        <Jerseys addItem={addItemToCart} />
+      </Route>
+      <Route path="/players" exact>
+        <Players addItem={addItemToCart} />
+      </Route>
+      <Route path="/shorts" exact>
+        <Shorts addItem={addItemToCart} />
+      </Route>
+      <Route path="/jackets" exact>
+        <Jackets addItem={addItemToCart} />
+      </Route>
+      <Route path="/accessories" exact>
+        <Accessories addItem={addItemToCart} />
+      </Route>
+      <Route path="/soccerballs" exact>
+        <SoccerBalls addItem={addItemToCart} />
+      </Route>
+      <Route path="/vintage" exact>
+        <Vintage addItem={addItemToCart} />
+      </Route>
+    </Switch>
+    <Redirect to="/" />
+    <Footer />
+  </Router>
  );
 };
 

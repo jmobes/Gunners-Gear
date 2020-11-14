@@ -1,18 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 
-import ProductDetails from "../ProductDetails/ProductDetails";
+import CartMessage from "../CartMessage/CartMessage";
 
 import "./CardButton.css";
 
-const CardButton = () => {
+const CardButton = (props) => {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const addItemAndDisplay = () => {
+    setShowMessage(true);
+    props.addItem();
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 3000);
+  };
   return (
-    <button onClick={showDetails} className="card__button">View Details</button>
+    <React.Fragment>
+      <button onClick={addItemAndDisplay} className="card__button">Add To Cart</button>
+      {showMessage && <CartMessage />}
+    </React.Fragment>
   );
 };
-
-function showDetails() {
-  console.log("clicked");
-  return <ProductDetails />;
-}
 
 export default CardButton;

@@ -15,7 +15,7 @@ import tie from "./images/tie.jpeg";
 
 
 
-const Accessories = () => {
+const Accessories = (props) => {
   return (
     <section className="accessories-container">
       <div className="accessories__card">
@@ -23,7 +23,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Men's dress socks</h3>
           <h4 className="accessories__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -31,7 +31,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Red arsenal mug</h3>
           <h4 className="accessories__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -39,7 +39,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Retro arsenal themed boxers</h3>
           <h4 className="accessories__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -47,7 +47,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Arsenal winter scarf</h3>
           <h4 className="accessories__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -55,7 +55,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Red Arsenal slippers</h3>
           <h4 className="accessories__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -63,7 +63,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Black Arsenal football socks</h3>
           <h4 className="accessories__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -71,7 +71,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Red Arsenal football socks</h3>
           <h4 className="accessories__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="accessories__card">
@@ -79,7 +79,7 @@ const Accessories = () => {
         <div className="accessories__card__details">
           <h3 className="accessories__card__title">Red Arsenal classy tie</h3>
           <h4 className="accessories__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
     </section>

@@ -1,0 +1,14 @@
+.cartMessage {
+    background: var(--color-blue-primary);
+    color: #fff;
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    padding: .5em 1em;
+    text-align: center;
+    border-radius: 5px;
+}
+.cartMessage__text {
+    font-size: 2.5rem;
+}
