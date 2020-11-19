@@ -2,7 +2,7 @@
     background: var(--color-blue-primary);
     color: #fff;
     position: fixed;
-    top: 80%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%,0%);
     padding: .5em 1em;

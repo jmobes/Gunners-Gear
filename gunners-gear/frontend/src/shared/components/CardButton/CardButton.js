@@ -16,7 +16,7 @@ const CardButton = (props) => {
   };
   return (
     <React.Fragment>
-      <button onClick={addItemAndDisplay} className="card__button">Add To Cart</button>
+      <button onClick={addItemAndDisplay} className="card__button">View Details</button>
       {showMessage && <CartMessage />}
     </React.Fragment>
   );

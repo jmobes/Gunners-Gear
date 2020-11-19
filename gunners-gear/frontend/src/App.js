@@ -10,7 +10,6 @@ import Shorts from "./pages/Shorts/Shorts";
 import Jackets from "./pages/Jackets/Jackets";
 import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
-import Retro from "./pages/Vintage/Vintage";
 import Vintage from "./pages/Vintage/Vintage";
 
 
@@ -50,7 +49,7 @@ const App = () => {
         <Vintage addItem={addItemToCart} />
       </Route>
     </Switch>
-    <Redirect to="/" />
+    <Redirect to="/jerseys" />
     <Footer />
   </Router>
  );
