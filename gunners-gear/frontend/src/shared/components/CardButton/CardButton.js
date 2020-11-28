@@ -14,9 +14,10 @@ const CardButton = (props) => {
       setShowMessage(false);
     }, 3000);
   };
+
   return (
     <React.Fragment>
-      <button onClick={addItemAndDisplay} className="card__button">View Details</button>
+      <button onClick={addItemAndDisplay} className="card__button">Add to Cart</button>
       {showMessage && <CartMessage />}
     </React.Fragment>
   );
