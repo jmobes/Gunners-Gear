@@ -3,6 +3,7 @@ import React from "react";
 import "./Jerseys.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
+import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 import blackJersey from "./images/black-long.png";
 import blueJersey from "./images/blue.png";
@@ -21,7 +22,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Black Goalkeeper Jersey</h3>
           <h4 className="jersey__card__price">$80</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
       <div className="jersey__card">
@@ -29,7 +31,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Away Long Sleeve Jersey</h3>
           <h4 className="jersey__card__price">$80</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
       <div className="jersey__card">
@@ -37,7 +40,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Mens Home Jersey Long Sleeve</h3>
           <h4 className="jersey__card__price">$100</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
       <div className="jersey__card">
@@ -45,7 +49,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Mens Home Jersey short sleeve</h3>
           <h4 className="jersey__card__price">$95</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
       <div className="jersey__card">
@@ -53,7 +58,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Womens Home Jersey</h3>
           <h4 className="jersey__card__price">$100</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
       <div className="jersey__card">
@@ -61,7 +67,8 @@ const Jersey = (props) => {
         <div className="jersey__card__details">
           <h3 className="jersey__card__title">Yellow Training Jersey</h3>
           <h4 className="jersey__card__price">$90</h4>
-          <CardButton className="card__button" />
+          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+          <DetailsButton />
         </div>
       </div>
     </section>

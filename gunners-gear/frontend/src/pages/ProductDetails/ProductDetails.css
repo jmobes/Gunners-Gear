@@ -1,0 +1,8 @@
+.product {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+}
