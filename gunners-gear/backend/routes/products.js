@@ -1,37 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const products = [
-    {id: 1, name: "jersey"},
-    {id: 2, name: "soccer ball"},
-    {id: 3, name: "hat"},
-    {id: 4, name: "jacket"},
-    {id: 5, name: "mug"}
-];
+const {Product, validate} = require("../models/product");
+const ClientError = require("../errorObj/client-error");
 
-router.get("/", (req,res) => {
-    console.log("hello my friend!");
-    return res.send(products).status(200);
+router.get("/", async(req, res, next) => {
+    try {
+        const products = await Product.find().sort("title");
+        res.status(200).send(products)
+    }
+    catch(err) {
+        next(err)
+    }
 });
 
-router.get("/:id", (req,res) => {
-    const product = products.find(product => Number(req.params.id) === product.id);
-    if(!product) return res.send("Could not find product with the given ID").status(404);
+router.get("/:id", async(req, res, next) => {
+    let id = req.params.id;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send("Invalid ID");
 
-    return res.send(product).status(200);
-});
-
-router.post("/", (req,res) => {
-    const product = {
-        id: products.length + 1,
-        name: req.body.name
-    };
-
-    products.push(product);
-
-    res.send(product);
+    try {
+        const product = await Product.findById(id);
+        if(!product) return res.status(404).send(`Product with the ID ${id} does not exist.`);
+        res.status(200).send(product);
+    }
+    catch(err) {
+        next(err);
+    }
 });
 
 module.exports = router;
