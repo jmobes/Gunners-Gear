@@ -5,7 +5,7 @@ Joi.objectId = require("joi-objectid")(Joi);
 const checkoutSchema = new mongoose.Schema({
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "products",
+        ref: "Product",
         required: true
     }]
 });
@@ -13,11 +13,11 @@ const checkoutSchema = new mongoose.Schema({
 const Checkout = mongoose.model("Checkout", checkoutSchema);
 
 function validateCheckout(checkout) {
-    let schema = {
-        ids: [Joi.objectId().required()]
-    }
+    let schema = Joi.object({
+        productId: Joi.objectId().required()
+    });
 
-    return Joi.validate(checkout, schema);
+    return schema.validate(checkout);
 }
 
 module.exports.Checkout = Checkout;

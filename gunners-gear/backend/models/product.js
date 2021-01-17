@@ -12,15 +12,15 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 
 function validateProduct(product) {
-    let schema = {
+    let schema = Joi.object({
         image: Joi.string().required(),
         title: Joi.string().required(),
         description: Joi.string().required(),
         price: Joi.number().min(0).required(),
         category: Joi.string().required()
-    };
-
-    return Joi.validate(product, schema);
+    });
+    
+    return schema.validate(product);
 }
 
 module.exports.Product = Product;
