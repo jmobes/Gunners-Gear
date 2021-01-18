@@ -1,54 +1,62 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-
+const ClientError = require("../models/ClientError");
 const {Product, validate} = require("../models/product");
-const ClientError = require("../errorObj/client-error");
 
 router.get("/", async(req, res, next) => {
+    let products;
     try {
-        const products = await Product.find().sort("title")
-        res.status(200).send(products)
+        products = await Product.find().sort("title");
     }
     catch(err) {
-        next(err)
+        return next(new ClientError("Unexpected error, could not get products", 500));
     }
+
+    res.status(200).send(products);
 });
 
 router.get("/:id", async(req, res, next) => {
-    let id = req.params.id;
-    if(!mongoose.Types.ObjectId.isValid(id)) throw new ClientError(400, "Invalid ID");
+    const id = req.params.id;
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return next(new ClientError("Invalid ID", 400));
+    }
 
+    let product;
     try {
-        const product = await Product.findById(id);
-        if(!product) throw new ClientError(404, `Product with the ID ${id} does not exist.`);
-        res.status(200).send(product);
+        product = await Product.findById(id);
     }
     catch(err) {
-        next(err);
+        next(new ClientError("Unexpected error, could not get the product", 500));
     }
+
+    if(!product) {
+        return next(new ClientError(`Product with the ID ${id} does not exist.`, 404));
+    } 
+        
+    res.status(200).send(product);
 });
 
 router.post("/", async(req, res, next) => {
     const {error} = validate(req.body);
-    if(error) res.send(error.details[0].message);
+    if(error) return res.status(400).send(error.details[0].message);
+
     const {image, title, description, price, category} = req.body;
-
+    const product = new Product({
+        image,
+        title,
+        description,
+        price,
+        category
+    });
     try {
-        const product = new Product({
-            image,
-            title,
-            description,
-            price,
-            category
-        });
         await product.save();
-
-        res.status(201).send(product);
     }
     catch(err) {
-        next(err);
+        next(new ClientError("Unexpected error, could not create product.", 500));
     }
+
+    res.status(201).send(product);
 });
 
 module.exports = router;
