@@ -1,19 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const mongoose = require("mongoose");
-
+const router = express.Router();
 const {Product, validate} = require("../models/product");
-const ClientError = require("../errorObj/client-error");
 
-router.get("/", async(req, res, next) => {
-    try {
-        const products = await Product.find().sort("title");
-        res.status(200).send(products)
-    }
-    catch(err) {
-        next(err)
-    }
+router.get("/", async (req,res) => {
+  const products = await Product.find();
+  res.status(200).send(products);
 });
+
 
 router.get("/:id", async(req, res, next) => {
     let id = req.params.id;
@@ -29,4 +23,3 @@ router.get("/:id", async(req, res, next) => {
     }
 });
 
-module.exports = router;

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const productSchema = new mongoose.Schema({
+
     image: {type: String, required: true},
     title: {type: String, required: true},
     description: {type: String, required: true},
@@ -11,7 +12,7 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-function validateProduct(product) {
+
     let schema = {
         image: Joi.string().required(),
         title: Joi.string().required(),
