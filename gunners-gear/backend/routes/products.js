@@ -8,11 +8,18 @@ router.get("/", async (req,res) => {
   res.status(200).send(products);
 });
 
-router.get("/:id", async (req,res) => {
-  const product = await Product.findById(req.params.id);
-  if(!product) res.status(404).send("Could not find product by the given ID");
 
-  res.status(200).send(product);
+router.get("/:id", async(req, res, next) => {
+    let id = req.params.id;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send("Invalid ID");
+
+    try {
+        const product = await Product.findById(id);
+        if(!product) return res.status(404).send(`Product with the ID ${id} does not exist.`);
+        res.status(200).send(product);
+    }
+    catch(err) {
+        next(err);
+    }
 });
 
-module.exports = router;

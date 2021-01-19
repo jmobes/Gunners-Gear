@@ -11,7 +11,7 @@ import retroMug from "./images/retro-mug.jpeg";
 import retroPolo from "./images/retro-polo.jpeg";
 import retroPoloDark from "./images/retro-polo-dark.jpeg";
 
-const Vintage = () => {
+const Vintage = (props) => {
   return (
     <section className="vintage-container">
       <div className="vintage__card">
@@ -19,7 +19,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens training black vintage</h3>
           <h4 className="vintage__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -27,7 +27,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Training warmers black</h3>
           <h4 className="vintage__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -35,7 +35,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Training warmers brown</h3>
           <h4 className="vintage__card__price">$35</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -43,7 +43,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens arsenal golf vintage</h3>
           <h4 className="vintage__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -51,7 +51,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens home color vintage</h3>
           <h4 className="vintage__card__price">$40</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="vintage__card">
@@ -59,7 +59,7 @@ const Vintage = () => {
         <div className="vintage__card__details">
           <h3 className="vintage__card__title">Mens arsenal swimming trunks</h3>
           <h4 className="vintage__card__price">$30</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
     </section>

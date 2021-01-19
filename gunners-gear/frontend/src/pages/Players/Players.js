@@ -18,7 +18,7 @@ import xhaka from "./images/xhaka.png";
 
 
 
-const Players = () => {
+const Players = (props) => {
   return (
     <section className="players__container">
       <div className="player__card card">
@@ -31,7 +31,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">Gabon</h4>
           <h4 className="player__card__number">14</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -44,7 +44,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Spain</h4>
           <h4 className="player__card__number">2</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -57,7 +57,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">France</h4>
           <h4 className="player__card__number">9</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -70,7 +70,7 @@ const Players = () => {
           <h4 className="player__card__position">Goalkeeper</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">1</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -83,7 +83,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Brazil</h4>
           <h4 className="player__card__number">23</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -96,7 +96,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">20</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -109,7 +109,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">Germany</h4>
           <h4 className="player__card__number">10</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -122,7 +122,7 @@ const Players = () => {
           <h4 className="player__card__position">Forward</h4>
           <h4 className="player__card__country">France</h4>
           <h4 className="player__card__number">19</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -135,7 +135,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">England</h4>
           <h4 className="player__card__number">77</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -148,7 +148,7 @@ const Players = () => {
           <h4 className="player__card__position">Defender</h4>
           <h4 className="player__card__country">Scottland</h4>
           <h4 className="player__card__number">3</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
       <div className="player__card card">
@@ -161,7 +161,7 @@ const Players = () => {
           <h4 className="player__card__position">Midfield</h4>
           <h4 className="player__card__country">Switzerland</h4>
           <h4 className="player__card__number">34</h4>
-          <CardButton className="card__button" />
+          <CardButton addItem={props.addItem} className="card__button" />
         </div>
       </div>
     </section>

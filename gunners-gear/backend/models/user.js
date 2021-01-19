@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     minlength: 1,
     maxlength: 50
   }
+
 });
 
 const User = mongoose.model("User", userSchema);
@@ -29,3 +30,4 @@ function validateUser(user) {
 
 module.exports.User = User;
 module.exports.validate = validateUser;
+

@@ -1,0 +1,20 @@
+[
+    {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQNeKkftGZuIEdvwWd5SAH1ppOmjM0w4_meA&usqp=CAU",
+        "title": "arsenal badge",
+        "description": "The arsenal logo",
+        "price": 3.99
+    },
+    {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpbx-ZvwvWMcEMeXlpYZqZd8NH2bOCpphZvg&usqp=CAU",
+        "title": "arsenal badge number 2",
+        "description": "The arsenal logo number 2",
+        "price": 9.99
+    },
+    {
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDP4OkikZQ5tMdvagfTIDi0MNPm0YZXN6VEQ&usqp=CAU",
+        "title": "arsenal badge number 3",
+        "description": "The arsenal logo number 3",
+        "price": 20.00
+    }
+]
