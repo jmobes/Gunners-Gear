@@ -10,26 +10,26 @@ router.get("/", async (req, res) => {
         res.status(200).send(users);
     }
     catch(err) {
-        return res.status(500).send("Unexpected error occured");
+        next(new ClientError("Unexpected error occurred", 500));
     }
 });
 
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send("invalid ID");
+    if(!mongoose.Types.ObjectId.isValid(id)) return next(new ClientError("Unexpected error occurred", 500));
 
     const user = await User.findById(id);
-    if(!user) return res.status(404).send("Cannot find user with the given ID");
+    if(!user) return next(new ClientError("Cannot find user with the given ID", 404));;
 
     res.status(200).send(user);
 });
 
 router.post("/", async (req, res) => {
     const {error} = validate(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return next(new ClientError(error.details[0].message, 400));;
 
     let user = await User.findOne({email: req.body.email});
-    if(user) return res.status(400).send("User already registered");
+    if(user) return next(new ClientError("User already registered", 400));;
 
     user = new User({
         name: req.body.name,

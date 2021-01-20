@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 const products = require("./routes/products.js");
-const checkout = require("./routes/checkout");
+const carts = require("./routes/carts");
 const users = require("./routes/users");
 const ClientError = require("./models/ClientError.js");
 
@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useU
 
 app.use(express.json());
 app.use("/api/products", products);
-app.use("/api/checkout", checkout);
+app.use("/api/cart", carts);
 app.use("/api/users", users);
 
 app.use((req, res, next) => {
