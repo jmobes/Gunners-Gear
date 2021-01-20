@@ -36,3 +36,4 @@ function validateUser(user) {
 
 module.exports.User = User;
 module.exports.validate = validateUser;
+
