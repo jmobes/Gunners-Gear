@@ -5,8 +5,8 @@ const app = express();
 const mongoose = require("mongoose");
 
 const products = require("./routes/products.js");
-const carts = require("./routes/carts");
 const users = require("./routes/users");
+const carts = require("./routes/carts");
 const ClientError = require("./models/ClientError.js");
 
 mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
@@ -15,8 +15,8 @@ mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useU
 
 app.use(express.json());
 app.use("/api/products", products);
-app.use("/api/cart", carts);
 app.use("/api/users", users);
+app.use("/api/user/cart", carts);
 
 app.use((req, res, next) => {
     const error = new ClientError("Could not find this route", 404);
