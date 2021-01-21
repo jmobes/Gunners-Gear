@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const productSchema = new mongoose.Schema({
-
     image: {type: String, required: true},
     title: {type: String, required: true},
     description: {type: String, required: true},
@@ -25,6 +24,6 @@ function validateProduct(product) {
 }
 
 module.exports.Product = Product;
-module.exports.validate = validateProduct;
+module.exports.validateProduct = validateProduct;
 module.exports.productSchema = productSchema;
 
