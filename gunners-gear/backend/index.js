@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const products = require("./routes/products.js");
 const users = require("./routes/users");
@@ -14,6 +15,8 @@ mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useU
     .catch(err => console.error("Could not connect to the database"));
 
 app.use(express.json());
+app.use(cors);
+app.use(express.static("public"));
 app.use("/api/products", products);
 app.use("/api/users", users);
 app.use("/api/user/cart", carts);
@@ -31,5 +34,5 @@ app.use((error, req, res, next) => {
     res.send(error.message || "An unknown error occurred");
 });
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Listening on port ${port}`));

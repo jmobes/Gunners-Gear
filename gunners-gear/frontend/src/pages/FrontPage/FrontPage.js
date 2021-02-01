@@ -29,7 +29,7 @@ const FrontPage = props => {
           <div className="gallery_item_ctn gallery_item_ctn--1">
             <img className="gallery__item gallery__item--1" src={jersey}></img>
             <Link to="/jerseys">
-              <button class="gallery_item__button button">Most Popular</button>
+              <button className="gallery_item__button button">Most Popular</button>
             </Link>
           </div>
           <div className="gallery_item_ctn gallery_item_ctn--2">
