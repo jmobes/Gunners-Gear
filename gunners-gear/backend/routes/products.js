@@ -38,7 +38,6 @@ router.get("/:id", async(req, res, next) => {
 });
 
 router.get("/category/:category", async(req, res, next) => {
-    console.log("accessories route was activated");
     let products;
     let category = req.params.category;
     try {
