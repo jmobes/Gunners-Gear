@@ -18,18 +18,35 @@ import tie from "./images/tie.jpeg";
 
 const Accessories = (props) => {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:5000/api/products/category/accessories");
       const data = await response.json();
+      setProducts(data);
       console.log({data});
     };
     fetchData();
   }, []);
 
-  return <h1>Hello world</h1>
+  return (
+    <section className="accessories-container">
+      {products && products.map(product => {
+        return (
+          <div key={product._id} className="accessories__card">
+            <img className="accessories__card__image" src={product.image}></img>
+            <div className="accessories__card__details">
+              <h3 className="accessories__card__title">{product.title}</h3>
+              <h4 className="accessories__card__price">${product.price}</h4>
+              {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+              <DetailsButton />
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
 
 
   // return (

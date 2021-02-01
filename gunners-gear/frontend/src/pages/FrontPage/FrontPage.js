@@ -35,13 +35,13 @@ const FrontPage = props => {
           <div className="gallery_item_ctn gallery_item_ctn--2">
             <img className="gallery__item gallery__item--2" src={ball}></img>
             <Link to="/soccerballs">
-              <button class="gallery_item__button button">Soccer Balls</button>
+              <button className="gallery_item__button button">Soccer Balls</button>
             </Link>
           </div>
           <div className="gallery_item_ctn gallery_item_ctn--3">
             <img className="gallery__item gallery__item--3" src={vintage}></img>
             <Link to="/vintage">
-              <button class="gallery_item__button button">Vintage</button>
+              <button className="gallery_item__button button">Vintage</button>
             </Link>
           </div>
         </div>
