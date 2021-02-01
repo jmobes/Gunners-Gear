@@ -3,16 +3,12 @@ import {Link} from "react-router-dom"
 
 import "./FrontPage.css";
 
-import stadium from "./images/stadium.jpg";
 import ball from "./images/ball.png";
 import jersey from "./images/jersey.png";
 import vintage from "./images/old-badge.png";
 import mug from "./images/mug.png";
 import scarf from "./images/scarf.png";
 import hat from "./images/hat.png";
-
-import Header from "../../shared/components/Header/Header";
-import Footer from "../../shared/components/Footer/Footer";
 
 const FrontPage = props => {
   return (
@@ -27,19 +23,19 @@ const FrontPage = props => {
       </h3>
         <div className="gallery_links">
           <div className="gallery_item_ctn gallery_item_ctn--1">
-            <img className="gallery__item gallery__item--1" src={jersey}></img>
+            <img className="gallery__item gallery__item--1" src={jersey} alt="jersey"></img>
             <Link to="/jerseys">
               <button className="gallery_item__button button">Most Popular</button>
             </Link>
           </div>
           <div className="gallery_item_ctn gallery_item_ctn--2">
-            <img className="gallery__item gallery__item--2" src={ball}></img>
+            <img className="gallery__item gallery__item--2" src={ball} alt="soccer ball"></img>
             <Link to="/soccerballs">
               <button className="gallery_item__button button">Soccer Balls</button>
             </Link>
           </div>
           <div className="gallery_item_ctn gallery_item_ctn--3">
-            <img className="gallery__item gallery__item--3" src={vintage}></img>
+            <img className="gallery__item gallery__item--3" src={vintage} alt="retro arsenal logo"></img>
             <Link to="/vintage">
               <button className="gallery_item__button button">Vintage</button>
             </Link>
@@ -57,9 +53,9 @@ const FrontPage = props => {
           </Link>
         </div>
         <div className="story__photos">
-          <img className="story__photos--1" src={mug}></img>
-          <img className="story__photos--2" src={scarf}></img>
-          <img className="story__photos--3" src={hat}></img>
+          <img className="story__photos--1" src={mug} alt="mug"></img>
+          <img className="story__photos--2" src={scarf} alt="scarf"></img>
+          <img className="story__photos--3" src={hat} alt="hat"></img>
         </div>
       </section>
       <div className="wallpaper"></div>

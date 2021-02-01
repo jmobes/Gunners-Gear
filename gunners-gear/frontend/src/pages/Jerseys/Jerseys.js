@@ -1,76 +1,46 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import "./Jerseys.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
-import blackJersey from "./images/black-long.png";
-import blueJersey from "./images/blue.png";
-import redJerseyLong from "./images/home-long.png";
-import redJerseyShort from "./images/home-short.png";
-import redJerseyWomen from "./images/home-women.png";
-import yellowJersey from "./images/yellow.png";
-
-
 const Jersey = (props) => {
   const incrementCart = props.incrementCart;
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let response, data;
+      try {
+        response = await fetch("http://localhost:5000/api/products/category/jerseys");
+        data = await response.json();
+      }
+      catch(err) {
+        return new Error(err);
+      }
+      
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="jerseys-container">
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={blackJersey}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Black Goalkeeper Jersey</h3>
-          <h4 className="jersey__card__price">$80</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={blueJersey}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Away Long Sleeve Jersey</h3>
-          <h4 className="jersey__card__price">$80</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={redJerseyLong}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Mens Home Jersey Long Sleeve</h3>
-          <h4 className="jersey__card__price">$100</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={redJerseyShort}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Mens Home Jersey short sleeve</h3>
-          <h4 className="jersey__card__price">$95</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={redJerseyWomen}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Womens Home Jersey</h3>
-          <h4 className="jersey__card__price">$100</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="jersey__card">
-        <img className="jersey__card__image" src={yellowJersey}></img>
-        <div className="jersey__card__details">
-          <h3 className="jersey__card__title">Yellow Training Jersey</h3>
-          <h4 className="jersey__card__price">$90</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
+      {products && products.map(product => {
+        return (
+          <div key={product._id} className="jersey__card">
+            <img className="jersey__card__image" src={`http://localhost:5000${product.image}`} alt={product.title}></img>
+            <div className="jersey__card__details">
+              <h3 className="jersey__card__title">{product.title}</h3>
+              <h4 className="jersey__card__price">{product.price}</h4>
+              {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+              <DetailsButton />
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 };

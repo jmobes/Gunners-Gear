@@ -23,7 +23,6 @@ const Accessories = (props) => {
       }
       
       setProducts(data);
-      console.log({data});
     };
     fetchData();
   }, []);
@@ -33,7 +32,7 @@ const Accessories = (props) => {
       {products && products.map(product => {
         return (
           <div key={product._id} className="accessories__card">
-            <img className="accessories__card__image" src={`http://localhost:5000${product.image}`}></img>
+            <img className="accessories__card__image" src={`http://localhost:5000${product.image}`} alt={product.title}></img>
             <div className="accessories__card__details">
               <h3 className="accessories__card__title">{product.title}</h3>
               <h4 className="accessories__card__price">${product.price}</h4>
