@@ -14,6 +14,14 @@ mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useU
     .catch(err => console.error("Could not connect to the database"));
 
 app.use(express.json());
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+
+    next();
+});
+app.use(express.static("public"));
 app.use("/api/products", products);
 app.use("/api/users", users);
 app.use("/api/user/cart", carts);
@@ -31,5 +39,5 @@ app.use((error, req, res, next) => {
     res.send(error.message || "An unknown error occurred");
 });
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Listening on port ${port}`));

@@ -40,7 +40,8 @@ const App = () => {
         <Jackets addItem={addItemToCart} />
       </Route>
       <Route path="/accessories" exact>
-        <Accessories addItem={addItemToCart} />
+        {/* <Accessories addItem={addItemToCart} /> */}
+        <Accessories />
       </Route>
       <Route path="/soccerballs" exact>
         <SoccerBalls addItem={addItemToCart} />

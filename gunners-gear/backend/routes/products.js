@@ -37,6 +37,19 @@ router.get("/:id", async(req, res, next) => {
     res.status(200).send(product);
 });
 
+router.get("/category/:category", async(req, res, next) => {
+    let products;
+    let category = req.params.category;
+    try {
+        products = await Product.find({category: category}).sort("title");
+    }
+    catch(err) {
+        return next(new ClientError("Unexpected error, could not get products", 500));
+    }
+    if(products.length === 0) return next(new ClientError("Could not find any products with the given category."), 404);
+    res.status(200).send(products);
+});
+
 router.post("/", async(req, res, next) => {
     const {error} = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);

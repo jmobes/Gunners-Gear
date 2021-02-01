@@ -13,7 +13,7 @@ const Header = props => {
     <header className="header_container">
       <div className="header">
         <Link className="logo_ctn" to="/">
-          <img className="logo__item" src={logo}></img>
+          <img className="logo__item" src={logo} alt="arsenal logo"></img>
         </Link>
         <h1 className="header__title">
           <span className="first-word">Gunners</span>{" "}

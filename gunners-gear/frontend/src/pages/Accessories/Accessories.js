@@ -1,96 +1,47 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import "./Accessories.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
-import dressSocks from "./images/dress-socks.jpeg";
-import mug from "./images/mug.jpeg";
-import underwear from "./images/retro-underwear.jpeg";
-import scarf from "./images/scarf.jpeg";
-import slippers from "./images/slippers.jpeg";
-import blackSocks from "./images/socks-black.jpeg";
-import redSocks from "./images/socks-red.jpeg";
-import tie from "./images/tie.jpeg";
-
 
 
 const Accessories = (props) => {
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let response, data;
+      try {
+        response = await fetch("http://localhost:5000/api/products/category/accessories");
+        data = await response.json();
+      }
+      catch(err) {
+        return new Error(err);
+      }
+      
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="accessories-container">
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={dressSocks}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Men's dress socks</h3>
-          <h4 className="accessories__card__price">$40</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={mug}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Red arsenal mug</h3>
-          <h4 className="accessories__card__price">$35</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={underwear}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Retro arsenal themed boxers</h3>
-          <h4 className="accessories__card__price">$35</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={scarf}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Arsenal winter scarf</h3>
-          <h4 className="accessories__card__price">$30</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={slippers}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Red Arsenal slippers</h3>
-          <h4 className="accessories__card__price">$40</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={blackSocks}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Black Arsenal football socks</h3>
-          <h4 className="accessories__card__price">$30</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={redSocks}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Red Arsenal football socks</h3>
-          <h4 className="accessories__card__price">$30</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
-      <div className="accessories__card">
-        <img className="accessories__card__image" src={tie}></img>
-        <div className="accessories__card__details">
-          <h3 className="accessories__card__title">Red Arsenal classy tie</h3>
-          <h4 className="accessories__card__price">$30</h4>
-          {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-          <DetailsButton />
-        </div>
-      </div>
+      {products && products.map(product => {
+        return (
+          <div key={product._id} className="accessories__card">
+            <img className="accessories__card__image" src={`http://localhost:5000${product.image}`} alt={product.title}></img>
+            <div className="accessories__card__details">
+              <h3 className="accessories__card__title">{product.title}</h3>
+              <h4 className="accessories__card__price">${product.price}</h4>
+              {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+              <DetailsButton />
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 };
