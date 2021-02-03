@@ -15,9 +15,15 @@ import Vintage from "./pages/Vintage/Vintage";
 
 const App = () => {
   const [itemCount, setItemCount] = useState(0);
+  const [showProduct, setShowProduct] = useState(false);
 
   const addItemToCart = () => {
     setItemCount(itemCount + 1);
+  };
+
+  const viewProduct = () => {
+    setShowProduct(true);
+    alert("details button was clicked");
   };
 
  return (
@@ -28,7 +34,7 @@ const App = () => {
         <FrontPage />
       </Route>
       <Route path="/jerseys" exact>
-        <Jerseys addItem={addItemToCart} />
+        <Jerseys addItem={addItemToCart} viewProduct={viewProduct} />
       </Route>
       <Route path="/players" exact>
         <Players addItem={addItemToCart} />

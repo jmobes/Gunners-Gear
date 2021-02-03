@@ -17,7 +17,7 @@ const Jackets = (props) => {
         data = await response.json();
       }
       catch(err) {
-        return new Error(err);
+        throw new Error(err);
       }
       setProducts(data);
     };

@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import "./SoccerBalls.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
+import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const SoccerBalls = (props) => {
 
@@ -16,7 +17,7 @@ const SoccerBalls = (props) => {
         data = await response.json();
       }
       catch(err) {
-        return new Error(err);
+        throw new Error(err);
       }
       
       setProducts(data);
@@ -33,7 +34,7 @@ const SoccerBalls = (props) => {
           <div className="ball__card__details">
             <h3 className="ball__card__title">{product.title}</h3>
             <h4 className="ball__card__price">{product.price}</h4>
-            <CardButton addItem={props.addItem} className="card__button" />
+            <DetailsButton />
           </div>
         </div>
        );

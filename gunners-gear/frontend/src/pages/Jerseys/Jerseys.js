@@ -18,7 +18,7 @@ const Jersey = (props) => {
         data = await response.json();
       }
       catch(err) {
-        return new Error(err);
+        throw new Error(err);
       }
       
       setProducts(data);
@@ -36,7 +36,7 @@ const Jersey = (props) => {
               <h3 className="jersey__card__title">{product.title}</h3>
               <h4 className="jersey__card__price">{product.price}</h4>
               {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-              <DetailsButton />
+              <DetailsButton viewProduct={props.viewProduct} />
             </div>
           </div>
         );

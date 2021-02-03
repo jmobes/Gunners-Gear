@@ -7,7 +7,7 @@ const DetailsButton = (props) => {
 
   return (
     <React.Fragment>
-      <button className="card__button">View Details</button>
+      <button className="card__button" id="button" onClick={props.viewProduct}>View Details</button>
     </React.Fragment>
   );
 };
