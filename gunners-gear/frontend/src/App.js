@@ -45,9 +45,15 @@ const App = () => {
     setItemDetails(details);
   };
 
+  const getCartCount = () => {
+    let count = 0;
+    if (cart.length) cart.map((item) => (count += item.quantity));
+    return count;
+  };
+
   return !showProduct ? (
     <Router>
-      {/* <Header count={itemCount} /> */}
+      <Header count={getCartCount} />
       <Switch>
         <Route path="/" exact>
           <FrontPage />
@@ -56,23 +62,22 @@ const App = () => {
           <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/players" exact>
-          <Players addItem={addItemToCart} />
+          <Players viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/shorts" exact>
-          <Shorts addItem={addItemToCart} />
+          <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/jackets" exact>
-          <Jackets addItem={addItemToCart} />
+          <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/accessories" exact>
-          {/* <Accessories addItem={addItemToCart} /> */}
-          <Accessories />
+          <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/soccerballs" exact>
-          <SoccerBalls addItem={addItemToCart} />
+          <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/vintage" exact>
-          <Vintage addItem={addItemToCart} />
+          <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
       </Switch>
       <Redirect to="/jerseys" />
@@ -80,7 +85,7 @@ const App = () => {
     </Router>
   ) : (
     <Router>
-      {/* <Header count={itemCount} /> */}
+      <Header count={getCartCount} />
       <ProductDetails
         details={itemDetails}
         addToCart={addItemToCart}

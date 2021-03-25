@@ -51,3 +51,29 @@
 .product__info__quantity__count--add:hover {
   background-color: rgb(202, 59, 59);
 }
+.back {
+  align-self: flex-start;
+  background: var(--color-red-primary);
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.back:hover {
+  background: var(--color-red-three);
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.cart {
+  background: var(--color-blue-primary);
+  color: #fff;
+  padding: 1rem;
+  font-size: 2.5rem;
+}
+.cart:hover {
+  background: var(--color-blue-secondary);
+  cursor: pointer;
+}

@@ -14,6 +14,7 @@ const ProductDetails = (props) => {
 
   return (
     <div className="product">
+      <div className="back">Back to Shop</div>
       <div className="product__image__container">
         <img
           src={`http://localhost:5000/${props.details.image}`}
@@ -46,12 +47,15 @@ const ProductDetails = (props) => {
             </div>
           </div>
         </div>
-        <CardButton
-          addToCart={props.addToCart}
-          productId={props.details.id}
-          getQuantity={getQuantity}
-          viewProduct={props.viewProduct}
-        />
+        <div className="buttons">
+          <CardButton
+            addToCart={props.addToCart}
+            productId={props.details.id}
+            getQuantity={getQuantity}
+            viewProduct={props.viewProduct}
+          />
+          <div className="cart">View Cart</div>
+        </div>
       </div>
     </div>
   );

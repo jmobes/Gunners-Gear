@@ -23,7 +23,6 @@ const CardButton = (props) => {
             item: props.productId,
             quantity: props.getQuantity(),
           });
-          props.viewProduct(false);
         }}
         className="card__button"
       >
