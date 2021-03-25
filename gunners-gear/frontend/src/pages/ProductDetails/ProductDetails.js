@@ -8,6 +8,10 @@ import AddIcon from "@material-ui/icons/Add";
 const ProductDetails = (props) => {
   const [quantity, setQuantity] = useState(1);
 
+  const getQuantity = () => {
+    return quantity;
+  };
+
   return (
     <div className="product">
       <div className="product__image__container">
@@ -42,7 +46,12 @@ const ProductDetails = (props) => {
             </div>
           </div>
         </div>
-        <CardButton />
+        <CardButton
+          addToCart={props.addToCart}
+          productId={props.details.id}
+          getQuantity={getQuantity}
+          viewProduct={props.viewProduct}
+        />
       </div>
     </div>
   );

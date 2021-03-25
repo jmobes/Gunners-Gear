@@ -16,20 +16,29 @@ import Jackets from "./pages/Jackets/Jackets";
 import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
-import ViewProduct from "./shared/components/ViewProduct/ViewProduct";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const App = () => {
-  const [itemCount, setItemCount] = useState(0);
+  const [cart, setCart] = useState([]);
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
 
-  const addItemToCart = () => {
-    setItemCount(itemCount + 1);
+  const addItemToCart = (newProduct) => {
+    const productId = newProduct.item;
+    const found = cart.some((product) => product.item === productId);
+    if (found) {
+      const copy = [...cart];
+      const index = copy.findIndex((product) => product.item === productId);
+      copy[index].quantity += newProduct.quantity;
+      setCart(copy);
+    } else {
+      const newCart = [...cart, newProduct];
+      setCart(newCart);
+    }
   };
 
-  const viewProduct = () => {
-    setShowProduct(true);
+  const viewProduct = (bool) => {
+    setShowProduct(bool);
   };
 
   const getDetails = (details) => {
@@ -38,17 +47,13 @@ const App = () => {
 
   return !showProduct ? (
     <Router>
-      <Header count={itemCount} />
+      {/* <Header count={itemCount} /> */}
       <Switch>
         <Route path="/" exact>
           <FrontPage />
         </Route>
         <Route path="/jerseys" exact>
-          <Jerseys
-            addItem={addItemToCart}
-            viewProduct={viewProduct}
-            itemDetails={getDetails}
-          />
+          <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
         <Route path="/players" exact>
           <Players addItem={addItemToCart} />
@@ -75,8 +80,12 @@ const App = () => {
     </Router>
   ) : (
     <Router>
-      <Header count={itemCount} />
-      <ProductDetails details={itemDetails} />
+      {/* <Header count={itemCount} /> */}
+      <ProductDetails
+        details={itemDetails}
+        addToCart={addItemToCart}
+        viewProduct={viewProduct}
+      />
     </Router>
   );
 };

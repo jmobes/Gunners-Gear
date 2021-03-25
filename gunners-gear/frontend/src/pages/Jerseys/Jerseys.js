@@ -41,8 +41,8 @@ const Jersey = (props) => {
               <div className="jersey__card__details">
                 <h3 className="jersey__card__title">{product.title}</h3>
                 <h4 className="jersey__card__price">{product.price}</h4>
-                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
                 <DetailsButton
+                  addItem={props.addItem}
                   viewProduct={() => {
                     props.itemDetails({
                       title: product.title,
@@ -51,7 +51,7 @@ const Jersey = (props) => {
                       description: product.description,
                       id: product._id,
                     });
-                    props.viewProduct();
+                    props.viewProduct(true);
                   }}
                 />
               </div>
