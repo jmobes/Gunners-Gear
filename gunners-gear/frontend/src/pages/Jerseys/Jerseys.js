@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Jerseys.css";
 
@@ -14,13 +14,14 @@ const Jersey = (props) => {
     const fetchData = async () => {
       let response, data;
       try {
-        response = await fetch("http://localhost:5000/api/products/category/jerseys");
+        response = await fetch(
+          "http://localhost:5000/api/products/category/jerseys"
+        );
         data = await response.json();
-      }
-      catch(err) {
+      } catch (err) {
         throw new Error(err);
       }
-      
+
       setProducts(data);
     };
     fetchData();
@@ -28,19 +29,34 @@ const Jersey = (props) => {
 
   return (
     <section className="jerseys-container">
-      {products && products.map(product => {
-        return (
-          <div key={product._id} className="jersey__card">
-            <img className="jersey__card__image" src={`http://localhost:5000${product.image}`} alt={product.title}></img>
-            <div className="jersey__card__details">
-              <h3 className="jersey__card__title">{product.title}</h3>
-              <h4 className="jersey__card__price">{product.price}</h4>
-              {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-              <DetailsButton viewProduct={props.viewProduct} />
+      {products &&
+        products.map((product) => {
+          return (
+            <div key={product._id} className="jersey__card">
+              <img
+                className="jersey__card__image"
+                src={`http://localhost:5000${product.image}`}
+                alt={product.title}
+              ></img>
+              <div className="jersey__card__details">
+                <h3 className="jersey__card__title">{product.title}</h3>
+                <h4 className="jersey__card__price">{product.price}</h4>
+                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+                <DetailsButton
+                  viewProduct={() => {
+                    props.itemDetails({
+                      title: product.title,
+                      price: product.price,
+                      image: product.image,
+                      description: product.description,
+                    });
+                    props.viewProduct();
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </section>
   );
 };

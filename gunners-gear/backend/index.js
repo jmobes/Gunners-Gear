@@ -9,7 +9,7 @@ const users = require("./routes/users");
 const carts = require("./routes/carts");
 const ClientError = require("./models/ClientError.js");
 
-mongoose.connect("mongodb://localhost/gunnersgear", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(() => console.log("Connected to GunnersGear DB..."))
     .catch(err => console.error("Could not connect to the database"));
 
