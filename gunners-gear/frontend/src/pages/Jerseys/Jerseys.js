@@ -35,7 +35,7 @@ const Jersey = (props) => {
             <div key={product._id} className="jersey__card">
               <img
                 className="jersey__card__image"
-                src={`http://localhost:5000${product.image}`}
+                src={`http://localhost:5000/${product.image}`}
                 alt={product.title}
               ></img>
               <div className="jersey__card__details">
@@ -49,6 +49,7 @@ const Jersey = (props) => {
                       price: product.price,
                       image: product.image,
                       description: product.description,
+                      id: product._id,
                     });
                     props.viewProduct();
                   }}

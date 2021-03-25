@@ -17,6 +17,7 @@ import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
 import ViewProduct from "./shared/components/ViewProduct/ViewProduct";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const App = () => {
   const [itemCount, setItemCount] = useState(0);
@@ -29,8 +30,8 @@ const App = () => {
 
   const viewProduct = () => {
     setShowProduct(true);
-    alert("details button was clicked");
   };
+
   const getDetails = (details) => {
     setItemDetails(details);
   };
@@ -75,8 +76,7 @@ const App = () => {
   ) : (
     <Router>
       <Header count={itemCount} />
-      <ViewProduct />
-      <Footer />
+      <ProductDetails details={itemDetails} />
     </Router>
   );
 };
