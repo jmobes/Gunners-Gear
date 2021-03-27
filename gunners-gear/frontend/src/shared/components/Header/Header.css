@@ -118,6 +118,7 @@
   text-transform: uppercase;
   font-family: "Russo One", sans-serif;
   letter-spacing: 0.5rem;
+  display: none;
 }
 .nav__list__mobile {
   display: inline-block;
@@ -137,6 +138,9 @@
 }
 .nav__list__item__mobile li {
   margin-bottom: 1rem;
+}
+.hidden {
+  display: none !important;
 }
 
 @media (max-width: 950px) {
@@ -211,6 +215,9 @@
   }
   .nav_links {
     display: none;
+  }
+  .nav__links__mobile {
+    display: block;
   }
 }
 @media (max-width: 560px) {
