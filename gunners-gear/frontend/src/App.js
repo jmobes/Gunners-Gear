@@ -80,7 +80,7 @@ const App = () => {
           <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
         </Route>
       </Switch>
-      <Redirect to="/jerseys" />
+      <Redirect to="/" />
       <Footer />
     </Router>
   ) : (

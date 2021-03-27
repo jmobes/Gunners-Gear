@@ -7,8 +7,7 @@ import "./Header.css";
 import logo from "./images/logo.png";
 import sprite from "../../../images/sprites.svg";
 
-const Header = props => {
-
+const Header = (props) => {
   return (
     <header className="header_container">
       <div className="header">
@@ -55,6 +54,25 @@ const Header = props => {
           </ul>
         </nav>
       </div>
+      <nav className="nav__links__mobile">
+        <ul className="nav__list__mobile">
+          <Link className="nav__list__item__mobile" to="/jerseys">
+            <li>Jerseys</li>
+          </Link>
+          <Link className="nav__list__item__mobile" to="/players">
+            <li>Players</li>
+          </Link>
+          <Link className="nav__list__item__mobile" to="/shorts">
+            <li>Shorts</li>
+          </Link>
+          <Link className="nav__list__item__mobile" to="/jackets">
+            <li>Jackets</li>
+          </Link>
+          <Link className="nav__list__item__mobile" to="/accessories">
+            <li>Accessories</li>
+          </Link>
+        </ul>
+      </nav>
     </header>
   );
 };

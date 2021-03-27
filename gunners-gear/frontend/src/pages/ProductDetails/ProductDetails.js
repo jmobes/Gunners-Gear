@@ -14,7 +14,9 @@ const ProductDetails = (props) => {
 
   return (
     <div className="product">
-      <div className="back">Back to Shop</div>
+      <div onClick={() => props.viewProduct(false)} className="back">
+        Back to Shop
+      </div>
       <div className="product__image__container">
         <img
           src={`http://localhost:5000/${props.details.image}`}

@@ -7,7 +7,9 @@
   margin: 0 auto;
   padding: 1rem;
 }
-.product__info__container {
+.product__image {
+  height: 300px;
+  width: 300px;
 }
 .product__info__description {
   font-size: 2rem;
