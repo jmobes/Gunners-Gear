@@ -1,5 +1,10 @@
-import React, {useState} from "react";
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import FrontPage from "./pages/FrontPage/FrontPage";
 import Header from "./shared/components/Header/Header";
@@ -11,49 +16,83 @@ import Jackets from "./pages/Jackets/Jackets";
 import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
-
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const App = () => {
-  const [itemCount, setItemCount] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [showProduct, setShowProduct] = useState(false);
+  const [itemDetails, setItemDetails] = useState();
 
-  const addItemToCart = () => {
-    setItemCount(itemCount + 1);
+  const addItemToCart = (newProduct) => {
+    const productId = newProduct.item;
+    const found = cart.some((product) => product.item === productId);
+    if (found) {
+      const copy = [...cart];
+      const index = copy.findIndex((product) => product.item === productId);
+      copy[index].quantity += newProduct.quantity;
+      setCart(copy);
+    } else {
+      const newCart = [...cart, newProduct];
+      setCart(newCart);
+    }
   };
 
- return (
-  <Router>
-    <Header count={itemCount} />
-    <Switch>
-      <Route path="/" exact>
-        <FrontPage />
-      </Route>
-      <Route path="/jerseys" exact>
-        <Jerseys addItem={addItemToCart} />
-      </Route>
-      <Route path="/players" exact>
-        <Players addItem={addItemToCart} />
-      </Route>
-      <Route path="/shorts" exact>
-        <Shorts addItem={addItemToCart} />
-      </Route>
-      <Route path="/jackets" exact>
-        <Jackets addItem={addItemToCart} />
-      </Route>
-      <Route path="/accessories" exact>
-        {/* <Accessories addItem={addItemToCart} /> */}
-        <Accessories />
-      </Route>
-      <Route path="/soccerballs" exact>
-        <SoccerBalls addItem={addItemToCart} />
-      </Route>
-      <Route path="/vintage" exact>
-        <Vintage addItem={addItemToCart} />
-      </Route>
-    </Switch>
-    <Redirect to="/jerseys" />
-    <Footer />
-  </Router>
- );
+  const viewProduct = (bool) => {
+    setShowProduct(bool);
+  };
+
+  const getDetails = (details) => {
+    setItemDetails(details);
+  };
+
+  const getCartCount = () => {
+    let count = 0;
+    if (cart.length) cart.map((item) => (count += item.quantity));
+    return count;
+  };
+
+  return !showProduct ? (
+    <Router>
+      <Header count={getCartCount} />
+      <Switch>
+        <Route path="/" exact>
+          <FrontPage />
+        </Route>
+        <Route path="/jerseys" exact>
+          <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/players" exact>
+          <Players viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/shorts" exact>
+          <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/jackets" exact>
+          <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/accessories" exact>
+          <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/soccerballs" exact>
+          <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/vintage" exact>
+          <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+      </Switch>
+      <Redirect to="/" />
+      <Footer />
+    </Router>
+  ) : (
+    <Router>
+      <Header count={getCartCount} />
+      <ProductDetails
+        details={itemDetails}
+        addToCart={addItemToCart}
+        viewProduct={viewProduct}
+      />
+    </Router>
+  );
 };
 
 export default App;
