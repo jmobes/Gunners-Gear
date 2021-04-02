@@ -1,58 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./SoccerBalls.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
+import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
-import ballBlack from "./images/ball-black.png";
-import ballKids from "./images/ball-kids.png";
-import ballRed1 from "./images/ball-red-1.jpeg";
-import ballRed2 from "./images/ball-red-2.png";
-import ballYellow from "./images/ball-yellow.png";
+const SoccerBalls = (props) => {
+  const [products, setProducts] = useState();
 
-const SoccerBalls = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      let response, data;
+      try {
+        response = await fetch(
+          "http://localhost:5000/api/products/category/balls"
+        );
+        data = await response.json();
+      } catch (err) {
+        throw new Error(err);
+      }
+
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="ball-container">
-      <div className="ball__card">
-        <img className="ball__card__image" src={ballBlack}></img>
-        <div className="ball__card__details">
-          <h3 className="ball__card__title">Mens training black ball</h3>
-          <h4 className="ball__card__price">$40</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="ball__card">
-        <img className="ball__card__image" src={ballKids}></img>
-        <div className="ball__card__details">
-          <h3 className="ball__card__title">Training warmers black</h3>
-          <h4 className="ball__card__price">$35</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="ball__card">
-        <img className="ball__card__image" src={ballRed1}></img>
-        <div className="ball__card__details">
-          <h3 className="ball__card__title">Mens arsenal golf ball</h3>
-          <h4 className="ball__card__price">$30</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="ball__card">
-        <img className="ball__card__image" src={ballRed2}></img>
-        <div className="ball__card__details">
-          <h3 className="ball__card__title">Mens home color ball</h3>
-          <h4 className="ball__card__price">$40</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="ball__card">
-        <img className="ball__card__image" src={ballYellow}></img>
-        <div className="ball__card__details">
-          <h3 className="ball__card__title">Mens arsenal swimming trunks</h3>
-          <h4 className="ball__card__price">$30</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
+      {products &&
+        products.map((product) => {
+          return (
+            <div key={product._id} className="ball__card">
+              <img
+                className="ball__card__image"
+                src={`http://localhost:5000${product.image}`}
+                alt={product.title}
+              ></img>
+              <div className="ball__card__details">
+                <h3 className="ball__card__title">{product.title}</h3>
+                <h4 className="ball__card__price">{product.price}</h4>
+                <DetailsButton
+                  addItem={props.addItem}
+                  viewProduct={() => {
+                    props.itemDetails({
+                      title: product.title,
+                      price: product.price,
+                      image: product.image,
+                      description: product.description,
+                      id: product._id,
+                    });
+                    props.viewProduct(true);
+                  }}
+                />
+              </div>
+            </div>
+          );
+        })}
     </section>
   );
 };

@@ -1,67 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Shorts.css";
 
 import CardButton from "../../shared/components/CardButton/CardButton";
+import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
-import blackShorts from "./images/black.png";
-import blackSweats from "./images/black-sweat-shorts.png";
-import brownShorts from "./images/brown-sweat-shorts.png";
-import golfShorts from "./images/golf-shorts.png";
-import homeShorts from "./images/home.png";
-import swimmingShorts from "./images/swimming-trunks.png";
+const Shorts = (props) => {
+  const [products, setProducts] = useState();
 
-const Shorts = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      let response, data;
+      try {
+        response = await fetch(
+          "http://localhost:5000/api/products/category/shorts"
+        );
+        data = await response.json();
+      } catch (err) {
+        throw new Error(err);
+      }
+
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="shorts-container">
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={blackShorts}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Mens training black shorts</h3>
-          <h4 className="shorts__card__price">$40</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={blackSweats}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Training warmers black</h3>
-          <h4 className="shorts__card__price">$35</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={brownShorts}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Training warmers brown</h3>
-          <h4 className="shorts__card__price">$35</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={golfShorts}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Mens arsenal golf shorts</h3>
-          <h4 className="shorts__card__price">$30</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={homeShorts}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Mens home color shorts</h3>
-          <h4 className="shorts__card__price">$40</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
-      <div className="shorts__card">
-        <img className="shorts__card__image" src={swimmingShorts}></img>
-        <div className="shorts__card__details">
-          <h3 className="shorts__card__title">Mens arsenal swimming trunks</h3>
-          <h4 className="shorts__card__price">$30</h4>
-          <CardButton className="card__button" />
-        </div>
-      </div>
+      {products &&
+        products.map((product) => {
+          return (
+            <div key={product._id} className="shorts__card">
+              <img
+                className="shorts__card__image"
+                src={`http://localhost:5000${product.image}`}
+                alt={product.title}
+              ></img>
+              <div className="shorts__card__details">
+                <h3 className="shorts__card__title">{product.title}</h3>
+                <h4 className="shorts__card__price">{product.price}</h4>
+                <DetailsButton
+                  addItem={props.addItem}
+                  viewProduct={() => {
+                    props.itemDetails({
+                      title: product.title,
+                      price: product.price,
+                      image: product.image,
+                      description: product.description,
+                      id: product._id,
+                    });
+                    props.viewProduct(true);
+                  }}
+                />
+              </div>
+            </div>
+          );
+        })}
     </section>
   );
 };

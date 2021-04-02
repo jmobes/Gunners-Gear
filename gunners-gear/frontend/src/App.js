@@ -1,5 +1,10 @@
-import React from "react";
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import FrontPage from "./pages/FrontPage/FrontPage";
 import Header from "./shared/components/Header/Header";
@@ -10,44 +15,84 @@ import Shorts from "./pages/Shorts/Shorts";
 import Jackets from "./pages/Jackets/Jackets";
 import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
-import Retro from "./pages/Vintage/Vintage";
 import Vintage from "./pages/Vintage/Vintage";
-
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const App = () => {
- return (
-   <Router>
-     <Header />
-     <Switch>
-       <Route path="/" exact>
-         <FrontPage />
-       </Route>
-       <Route path="/jerseys" exact>
-         <Jerseys />
-       </Route>
-       <Route path="/players" exact>
-         <Players />
-       </Route>
-       <Route path="/shorts" exact>
-         <Shorts />
-       </Route>
-       <Route path="/jackets" exact>
-         <Jackets />
-       </Route>
-       <Route path="/accessories" exact>
-         <Accessories />
-       </Route>
-       <Route path="/soccerballs" exact>
-         <SoccerBalls />
-       </Route>
-       <Route path="/vintage" exact>
-         <Vintage />
-       </Route>
-     </Switch>
-     <Redirect to="/" />
-     <Footer />
-   </Router>
- );
+  const [cart, setCart] = useState([]);
+  const [showProduct, setShowProduct] = useState(false);
+  const [itemDetails, setItemDetails] = useState();
+
+  const addItemToCart = (newProduct) => {
+    const productId = newProduct.item;
+    const found = cart.some((product) => product.item === productId);
+    if (found) {
+      const copy = [...cart];
+      const index = copy.findIndex((product) => product.item === productId);
+      copy[index].quantity += newProduct.quantity;
+      setCart(copy);
+    } else {
+      const newCart = [...cart, newProduct];
+      setCart(newCart);
+    }
+  };
+
+  const viewProduct = (bool) => {
+    setShowProduct(bool);
+  };
+
+  const getDetails = (details) => {
+    setItemDetails(details);
+  };
+
+  const getCartCount = () => {
+    let count = 0;
+    if (cart.length) cart.map((item) => (count += item.quantity));
+    return count;
+  };
+
+  return !showProduct ? (
+    <Router>
+      <Header count={getCartCount} />
+      <Switch>
+        <Route path="/" exact>
+          <FrontPage />
+        </Route>
+        <Route path="/jerseys" exact>
+          <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/players" exact>
+          <Players viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/shorts" exact>
+          <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/jackets" exact>
+          <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/accessories" exact>
+          <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/soccerballs" exact>
+          <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+        <Route path="/vintage" exact>
+          <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
+        </Route>
+      </Switch>
+      <Redirect to="/" />
+      <Footer />
+    </Router>
+  ) : (
+    <Router>
+      <Header count={getCartCount} />
+      <ProductDetails
+        details={itemDetails}
+        addToCart={addItemToCart}
+        viewProduct={viewProduct}
+      />
+    </Router>
+  );
 };
 
 export default App;
