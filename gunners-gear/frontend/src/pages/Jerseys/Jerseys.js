@@ -2,12 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import "./Jerseys.css";
 
-import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Jersey = (props) => {
-  const incrementCart = props.incrementCart;
-
   const [products, setProducts] = useState();
   const [error, setError] = useState(null);
 

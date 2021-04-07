@@ -37,8 +37,9 @@ const Accessories = (props) => {
               ></img>
               <div className="accessories__card__details">
                 <h3 className="accessories__card__title">{product.title}</h3>
-                <h4 className="accessories__card__price">${product.price}</h4>
-                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
+                <h4 className="accessories__card__price">
+                  ${product.price.toFixed(2)}
+                </h4>
                 <DetailsButton
                   addItem={props.addItem}
                   viewProduct={() => {

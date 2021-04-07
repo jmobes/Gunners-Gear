@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import "./Jackets.css";
 
-import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Jackets = (props) => {
