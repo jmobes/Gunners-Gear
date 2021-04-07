@@ -9,6 +9,7 @@ import sprite from "../../../images/sprites.svg";
 
 const Header = (props) => {
   const [showLinks, setShowLinks] = useState(false);
+
   return (
     <header className="header_container">
       <div className="header">
@@ -60,19 +61,39 @@ const Header = (props) => {
       </div>
       <nav className={`nav__links__mobile ${!showLinks && "hidden"}`}>
         <ul className="nav__list__mobile">
-          <Link className="nav__list__item__mobile" to="/jerseys">
+          <Link
+            onClick={() => setShowLinks(false)}
+            className="nav__list__item__mobile"
+            to="/jerseys"
+          >
             <li>Jerseys</li>
           </Link>
-          <Link className="nav__list__item__mobile" to="/players">
+          <Link
+            onClick={() => setShowLinks(false)}
+            className="nav__list__item__mobile"
+            to="/players"
+          >
             <li>Players</li>
           </Link>
-          <Link className="nav__list__item__mobile" to="/shorts">
+          <Link
+            onClick={() => setShowLinks(false)}
+            className="nav__list__item__mobile"
+            to="/shorts"
+          >
             <li>Shorts</li>
           </Link>
-          <Link className="nav__list__item__mobile" to="/jackets">
+          <Link
+            onClick={() => setShowLinks(false)}
+            className="nav__list__item__mobile"
+            to="/jackets"
+          >
             <li>Jackets</li>
           </Link>
-          <Link className="nav__list__item__mobile" to="/accessories">
+          <Link
+            onClick={() => setShowLinks(false)}
+            className="nav__list__item__mobile"
+            to="/accessories"
+          >
             <li>Accessories</li>
           </Link>
         </ul>

@@ -9,6 +9,7 @@ const Jersey = (props) => {
   const incrementCart = props.incrementCart;
 
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,8 @@ const Jersey = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occured");
+        console.error(err);
       }
 
       setProducts(data);
@@ -29,7 +31,7 @@ const Jersey = (props) => {
 
   return (
     <section className="jerseys-container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="jersey__card">
@@ -57,7 +59,10 @@ const Jersey = (props) => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>{error}</div>
+      )}
     </section>
   );
 };
