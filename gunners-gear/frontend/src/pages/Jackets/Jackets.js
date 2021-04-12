@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Jackets.css";
 
@@ -37,20 +38,24 @@ const Jackets = (props) => {
               <div className="jackets__card__details">
                 <h3 className="jackets__card__title">{product.title}</h3>
                 <h4 className="jackets__card__price">{product.price}</h4>
-                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <Link
+                  className="jackets__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                      props.viewProduct(true);
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );

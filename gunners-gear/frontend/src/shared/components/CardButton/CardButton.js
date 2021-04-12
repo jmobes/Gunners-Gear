@@ -7,13 +7,9 @@ import "./CardButton.css";
 const CardButton = (props) => {
   const [showMessage, setShowMessage] = useState(false);
 
-  // const addItemAndDisplay = () => {
-  //   setShowMessage(true);
-  //   props.addItem();
-  //   setTimeout(() => {
-  //     setShowMessage(false);
-  //   }, 3000);
-  // };
+  const displayMessage = () => {
+    setShowMessage(true);
+  };
 
   return (
     <React.Fragment>
@@ -23,6 +19,7 @@ const CardButton = (props) => {
             item: props.productId,
             quantity: props.getQuantity(),
           });
+          displayMessage();
         }}
         className="card__button"
       >

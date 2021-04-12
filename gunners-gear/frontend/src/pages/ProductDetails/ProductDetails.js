@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import "./ProductDetails.css";
 import CardButton from "../../shared/components/CardButton/CardButton";
@@ -7,6 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 
 const ProductDetails = (props) => {
   const [quantity, setQuantity] = useState(1);
+  const history = useHistory();
 
   const getQuantity = () => {
     return quantity;
@@ -14,7 +16,7 @@ const ProductDetails = (props) => {
 
   return (
     <div className="product">
-      <div onClick={() => props.viewProduct(false)} className="back">
+      <div onClick={() => history.goBack()} className="back">
         Back to Shop
       </div>
       <div className="product__image__container">
@@ -28,7 +30,7 @@ const ProductDetails = (props) => {
         <p className="product__info__description">
           {props.details.description}
         </p>
-        <p className="product__info__price">{props.details.price}</p>
+        <p className="product__info__price">{props.details.price.toFixed(2)}</p>
         <div className="product__info__quantity">
           <p className="product__info__quantity--text">Quantity: </p>
           <div className="product__info__quantity__count">

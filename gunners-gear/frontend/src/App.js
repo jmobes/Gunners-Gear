@@ -51,48 +51,96 @@ const App = () => {
     return count;
   };
 
-  return !showProduct ? (
-    <Router>
-      <Header count={getCartCount} />
-      <Switch>
-        <Route path="/" exact>
-          <FrontPage />
-        </Route>
-        <Route path="/jerseys" exact>
-          <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/players" exact>
-          <Players viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/shorts" exact>
-          <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/jackets" exact>
-          <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/accessories" exact>
-          <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/soccerballs" exact>
-          <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-        <Route path="/vintage" exact>
-          <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
-        </Route>
-      </Switch>
-      <Redirect to="/" />
-      <Footer />
-    </Router>
-  ) : (
-    <Router>
-      <Header count={getCartCount} />
-      <ProductDetails
-        details={itemDetails}
-        addToCart={addItemToCart}
-        viewProduct={viewProduct}
-      />
-    </Router>
-  );
+  let view;
+  if (itemDetails) {
+    view = (
+      <Router>
+        <Header count={getCartCount} />
+        <Switch>
+          <Route path="/" exact>
+            <FrontPage />
+          </Route>
+          <Route path="/jerseys" exact>
+            <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/players" exact>
+            <Players viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/shorts" exact>
+            <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/jackets" exact>
+            <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/accessories" exact>
+            <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/soccerballs" exact>
+            <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/vintage" exact>
+            <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path={`/product/${itemDetails.id}`}>
+            <ProductDetails
+              details={itemDetails}
+              addToCart={addItemToCart}
+              viewProduct={viewProduct}
+            />
+          </Route>
+          )}
+        </Switch>
+        <Redirect to="/" />
+        <Footer />
+      </Router>
+    );
+  } else {
+    view = (
+      <Router>
+        <Header count={getCartCount} viewProduct={viewProduct} />
+        <Switch>
+          <Route path="/" exact>
+            <FrontPage />
+          </Route>
+          <Route path="/jerseys" exact>
+            <Jerseys viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/players" exact>
+            <Players viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/shorts" exact>
+            <Shorts viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/jackets" exact>
+            <Jackets viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/accessories" exact>
+            <Accessories viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/soccerballs" exact>
+            <SoccerBalls viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          <Route path="/vintage" exact>
+            <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
+          </Route>
+          {showProduct && (
+            <React.Fragment>
+              <Route path={`/product/${itemDetails.id}`}>
+                <ProductDetails
+                  details={itemDetails}
+                  addToCart={addItemToCart}
+                  viewProduct={viewProduct}
+                />
+              </Route>
+            </React.Fragment>
+          )}
+        </Switch>
+        <Redirect to="/" />
+        <Footer />
+      </Router>
+    );
+  }
+  return view;
 };
 
 export default App;
