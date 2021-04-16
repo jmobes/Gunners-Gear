@@ -44,7 +44,6 @@ router.get("/category/:category", async (req, res, next) => {
   let category = req.params.category;
   try {
     products = await Product.find({ category: category }).sort("title");
-    console.log("PRODUCT: ", products);
   } catch (err) {
     return next(
       new ClientError("Unexpected error, could not get products", 500)

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import "./ProductDetails.css";
 import CardButton from "../../shared/components/CardButton/CardButton";
@@ -58,7 +58,9 @@ const ProductDetails = (props) => {
             getQuantity={getQuantity}
             viewProduct={props.viewProduct}
           />
-          <div className="cart">View Cart</div>
+          <Link to="/cart">
+            <div className="cart">View Cart</div>
+          </Link>
         </div>
       </div>
     </div>

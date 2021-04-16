@@ -30,14 +30,16 @@ const Header = (props) => {
           >
             <use href={sprite + "#menu"}></use>
           </svg>
-          <div className="cart-container">
-            <svg className="icon icon-cart">
-              <use href={sprite + "#shopping-cart"}></use>
-            </svg>
-            <div className="cart__num-ctn">
-              <CartCount count={props.count} />
+          <Link to="/cart">
+            <div className="cart-container">
+              <svg className="icon icon-cart">
+                <use href={sprite + "#shopping-cart"}></use>
+              </svg>
+              <div className="cart__num-ctn">
+                <CartCount count={props.count} />
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
         <nav className="nav_links">
           <ul className="nav_list">

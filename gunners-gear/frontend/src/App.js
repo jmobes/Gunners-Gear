@@ -17,6 +17,7 @@ import Accessories from "./pages/Accessories/Accessories";
 import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Cart from "./pages/Cart/Cart";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -88,7 +89,9 @@ const App = () => {
               viewProduct={viewProduct}
             />
           </Route>
-          )}
+          <Route path="/cart" exact>
+            <Cart cart={cart} updateCart={setCart} />
+          </Route>
         </Switch>
         <Redirect to="/" />
         <Footer />
@@ -123,19 +126,11 @@ const App = () => {
           <Route path="/vintage" exact>
             <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
           </Route>
-          {showProduct && (
-            <React.Fragment>
-              <Route path={`/product/${itemDetails.id}`}>
-                <ProductDetails
-                  details={itemDetails}
-                  addToCart={addItemToCart}
-                  viewProduct={viewProduct}
-                />
-              </Route>
-            </React.Fragment>
-          )}
+          <Route path="/cart" exact>
+            <Cart cart={cart} updateCart={setCart} />
+          </Route>
         </Switch>
-        <Redirect to="/" />
+        <Redirect to="/cart" />
         <Footer />
       </Router>
     );

@@ -68,4 +68,5 @@
 }
 .player__card__link {
   grid-area: button;
+  padding: 0;
 }
