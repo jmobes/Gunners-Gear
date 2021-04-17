@@ -25,7 +25,7 @@ const Cart = (props) => {
           .catch((err) => console.error(err));
       });
     }
-  }, [props.cart]);
+  }, []);
 
   useEffect(() => {
     console.log("ENTERING PRICE USE EFFECT");
@@ -56,7 +56,7 @@ const Cart = (props) => {
                 ></img>
                 <div className="checkout__card__details">
                   <h3 className="checkout__card__title">{product.title}</h3>
-                  <h4 className="checkout__card__price">{product.price}</h4>
+                  <h4 className="checkout__card__price">${product.price}</h4>
                   <div className="checkout__card__quantity checkout__card__link">
                     <p className="checkout__card__quantity--text">Quantity: </p>
                     <div className="checkout__card__quantity__count">
@@ -67,10 +67,14 @@ const Cart = (props) => {
                         <RemoveIcon
                           className="checkout__card__quantity__count--minus"
                           style={{ fontSize: 25 }}
+                          onClick={() =>
+                            props.updateQuantity(product._id, -1, "subtract")
+                          }
                         />
                         <AddIcon
                           className="checkout__card__quantity__count--add"
                           style={{ fontSize: 25 }}
+                          onClick={() => props.updateQuantity(product._id, 1)}
                         />
                       </div>
                     </div>
@@ -92,7 +96,7 @@ const Cart = (props) => {
             );
           })
         ) : (
-          <p>There are no items in your cart</p>
+          <p className="checkout__empty">There are no items in your cart</p>
         )}
         {products.length ? (
           <p className="checkout__price">{totalPrice}</p>

@@ -1,5 +1,11 @@
 .checkout__header {
   text-align: center;
+  font-size: 3rem;
+  color: var(--color-blue-primary);
+}
+.checkout__empty {
+  text-align: center;
+  font-size: 2rem;
 }
 .checkout-container {
   display: grid;
@@ -78,4 +84,6 @@
 .checkout__card__quantity__count--minus:hover,
 .checkout__card__quantity__count--add:hover {
   background-color: rgb(202, 59, 59);
+}
+.checkout__card__remove {
 }

@@ -43,6 +43,17 @@ const App = () => {
     setCart(newCart);
   };
 
+  const updateQuantity = (id, quantity, flag) => {
+    const copy = [...cart];
+    const index = copy.findIndex((product) => product.item === id);
+    if (flag && copy[index].quantity - 1 < 1) {
+      copy[index].quantity = 1;
+    } else {
+      copy[index].quantity += quantity;
+    }
+    setCart(copy);
+  };
+
   const viewProduct = (bool) => {
     setShowProduct(bool);
   };
@@ -95,7 +106,11 @@ const App = () => {
             />
           </Route>
           <Route path="/cart" exact>
-            <Cart cart={cart} removeItem={removeItemFromCart} />
+            <Cart
+              cart={cart}
+              removeItem={removeItemFromCart}
+              updateQuantity={updateQuantity}
+            />
           </Route>
         </Switch>
         <Redirect to="/" />
@@ -132,7 +147,11 @@ const App = () => {
             <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
           </Route>
           <Route path="/cart" exact>
-            <Cart cart={cart} removeItem={removeItemFromCart} />
+            <Cart
+              cart={cart}
+              removeItem={removeItemFromCart}
+              updateQuantity={updateQuantity}
+            />
           </Route>
         </Switch>
         <Redirect to="/cart" />
