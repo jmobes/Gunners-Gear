@@ -44,3 +44,38 @@
 .checkout__card__link {
   grid-area: button;
 }
+.checkout__card__quantity {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.checkout__card__quantity__count {
+  margin-left: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 75px;
+}
+.checkout__card__quantity__count--text {
+  color: red;
+}
+.checkout__card__quantity__count__icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.checkout__card__quantity__count--minus,
+.checkout__card__quantity__count--add {
+  background-color: rgb(211, 95, 95);
+  padding: 0.25rem;
+  border-radius: 10%;
+  color: #fff;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.checkout__card__quantity__count--minus:hover,
+.checkout__card__quantity__count--add:hover {
+  background-color: rgb(202, 59, 59);
+}

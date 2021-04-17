@@ -38,6 +38,11 @@ const App = () => {
     }
   };
 
+  const removeItemFromCart = (id) => {
+    const newCart = cart.filter((product) => product.item !== id);
+    setCart(newCart);
+  };
+
   const viewProduct = (bool) => {
     setShowProduct(bool);
   };
@@ -90,7 +95,7 @@ const App = () => {
             />
           </Route>
           <Route path="/cart" exact>
-            <Cart cart={cart} updateCart={setCart} />
+            <Cart cart={cart} removeItem={removeItemFromCart} />
           </Route>
         </Switch>
         <Redirect to="/" />
@@ -127,7 +132,7 @@ const App = () => {
             <Vintage viewProduct={viewProduct} itemDetails={getDetails} />
           </Route>
           <Route path="/cart" exact>
-            <Cart cart={cart} updateCart={setCart} />
+            <Cart cart={cart} removeItem={removeItemFromCart} />
           </Route>
         </Switch>
         <Redirect to="/cart" />
