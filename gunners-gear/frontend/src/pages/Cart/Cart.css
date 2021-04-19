@@ -86,4 +86,30 @@
   background-color: rgb(202, 59, 59);
 }
 .checkout__card__remove {
+  width: 100%;
+  background-color: var(--color-red-primary);
+  color: #fff;
+  padding: 1rem;
+  font-size: 3rem;
+  margin-top: 1rem;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.checkout__card__remove:hover {
+  background-color: var(--color-red-three);
+}
+.checkout__price {
+  font-size: 2.5rem;
+  text-align: center;
+}
+.checkout__price--number {
+  color: var(--color-blue-primary);
+  font-weight: bold;
+}
+
+@media (max-width: 635px) {
+  .checkout__header {
+    margin-top: 2rem;
+  }
 }

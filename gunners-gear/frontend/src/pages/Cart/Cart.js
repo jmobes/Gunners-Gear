@@ -79,18 +79,18 @@ const Cart = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div
-                    onClick={() => {
-                      const newArr = products.filter(
-                        (prod) => prod._id !== product._id
-                      );
-                      setProducts(newArr);
-                      props.removeItem(product._id);
-                    }}
-                    className="checkout__card__remove"
-                  >
-                    Remove
-                  </div>
+                </div>
+                <div
+                  onClick={() => {
+                    const newArr = products.filter(
+                      (prod) => prod._id !== product._id
+                    );
+                    setProducts(newArr);
+                    props.removeItem(product._id);
+                  }}
+                  className="checkout__card__remove"
+                >
+                  Remove
                 </div>
               </div>
             );
@@ -98,10 +98,13 @@ const Cart = (props) => {
         ) : (
           <p className="checkout__empty">There are no items in your cart</p>
         )}
-        {products.length ? (
-          <p className="checkout__price">{totalPrice}</p>
-        ) : null}
       </section>
+      {products.length ? (
+        <p className="checkout__price">
+          Total Price:{" "}
+          <span className="checkout__price--number">${totalPrice}</span>
+        </p>
+      ) : null}
     </React.Fragment>
   );
 };
