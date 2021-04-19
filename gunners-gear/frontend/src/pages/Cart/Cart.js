@@ -5,21 +5,16 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 
 const Cart = (props) => {
-  console.log("CART PROPS: ", props);
-
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    console.log("ENTERING USE-EFFECT");
     setProducts([]);
     if (props.cart.length) {
       props.cart.forEach((product) => {
-        console.log("PRODUCT IN USE EFFECT: ", product);
         fetch(`http://localhost:5000/api/products/${product.item}`)
           .then((res) => res.json())
           .then((prod) => {
-            console.log(prod);
             setProducts((oldArr) => [...oldArr, prod]);
           })
           .catch((err) => console.error(err));
@@ -28,14 +23,10 @@ const Cart = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("ENTERING PRICE USE EFFECT");
     let price = 0;
     products.forEach((product) => {
       const item = props.cart.find((item) => item.item === product._id);
-      console.log("PRICE: ", product.price);
-      console.log("QUANTITY: ", item.quantity);
       price = price + product.price * item.quantity;
-      console.log("PRICE: ", price);
     });
     setTotalPrice(price.toFixed(2));
   }, [products, props.cart]);
@@ -43,7 +34,11 @@ const Cart = (props) => {
   return (
     <React.Fragment>
       <h1 className="checkout__header">My Cart</h1>
-      <section className="checkout-container">
+      <section
+        className={`checkout-container ${
+          !products.length && "checkout-container-height"
+        }`}
+      >
         {products.length ? (
           products.map((product) => {
             const item = props.cart.find((item) => item.item === product._id);
@@ -100,10 +95,13 @@ const Cart = (props) => {
         )}
       </section>
       {products.length ? (
-        <p className="checkout__price">
-          Total Price:{" "}
-          <span className="checkout__price--number">${totalPrice}</span>
-        </p>
+        <React.Fragment>
+          <p className="checkout__price">
+            Total Price:{" "}
+            <span className="checkout__price--number">${totalPrice}</span>
+          </p>
+          <div className="checkout__buy">Proceed to checkout</div>
+        </React.Fragment>
       ) : null}
     </React.Fragment>
   );
