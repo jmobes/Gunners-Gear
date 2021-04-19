@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Accessories.css";
 
@@ -18,11 +19,12 @@ const Accessories = (props) => {
       } catch (err) {
         throw new Error(err);
       }
-
       setProducts(data);
     };
     fetchData();
   }, []);
+
+  useEffect(() => {});
 
   return (
     <section className="accessories-container">
@@ -37,21 +39,27 @@ const Accessories = (props) => {
               ></img>
               <div className="accessories__card__details">
                 <h3 className="accessories__card__title">{product.title}</h3>
-                <h4 className="accessories__card__price">${product.price}</h4>
-                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <h4 className="accessories__card__price">
+                  ${product.price.toFixed(2)}
+                </h4>
+                <Link
+                  className="accessories__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                      props.viewProduct(true);
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );

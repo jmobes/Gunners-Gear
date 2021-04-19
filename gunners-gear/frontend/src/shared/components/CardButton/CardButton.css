@@ -12,3 +12,6 @@
   background-color: var(--color-red-three);
   cursor: pointer;
 }
+a .card__button {
+  width: 100%;
+}

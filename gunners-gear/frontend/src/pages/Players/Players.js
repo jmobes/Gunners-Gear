@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Players.css";
 
-import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Players = (props) => {
@@ -44,19 +44,24 @@ const Players = (props) => {
                 <h4 className="player__card__position">{product.position}</h4>
                 <h4 className="player__card__country">{product.country}</h4>
                 <h4 className="player__card__number">{product.number}</h4>
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <Link
+                  className="player__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                      props.viewProduct(true);
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );
