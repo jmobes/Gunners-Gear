@@ -8,8 +8,7 @@ const Cart = (props) => {
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [enterShippingInfo, setEnterShippingInfo] = useState(true);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -48,94 +47,103 @@ const Cart = (props) => {
     view = (
       <div className="checkout__order">
         <div className="checkout__order__shipment">
+          Delivery Address
           <form className="checkout__order__shipment__address">
+            <label htmlFor="fname">Full Name</label>
             <input
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="first name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="John Smith"
+              id="fname"
             />
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="last name"
-            />
+            <label htmlFor="address">Address</label>
             <input
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              placeholder="street name"
+              placeholder="12345 Gooner Ave"
+              id="address"
             />
+            <label htmlFor="city">City</label>
             <input
               type="text"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              placeholder="city"
+              placeholder="Los Angeles"
+              id="city"
             />
+            <label htmlFor="state">State</label>
             <input
               type="text"
               value={state}
               onChange={(e) => setState(e.target.value)}
-              placeholder="state"
+              placeholder="California"
+              id="state"
             />
+            <label htmlFor="zip">Zip Code</label>
             <input
               type="text"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
-              placeholder="zip code"
+              placeholder="53219"
+              id="zip"
             />
           </form>
         </div>
         <div className="checkout__order__payment">
+          Payment
           <form className="checkout__order__payment__info">
+            <label htmlFor="card">Card Number</label>
             <input
               type="text"
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
-              placeholder="Card Number"
+              placeholder="1111-2222-3333-4444"
+              id="card"
             />
-            <label>
-              Month
-              <select
-                value={expirationMonth}
-                onChange={(e) => setExpirationMonth(e.target.value)}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </label>
-            <label>
-              Year
-              <select
-                value={expirationYear}
-                onChange={(e) => setExpirationYear(e.target.value)}
-              >
-                <option value="1">21</option>
-                <option value="2">22</option>
-                <option value="3">23</option>
-                <option value="4">24</option>
-                <option value="5">25</option>
-              </select>
-            </label>
+            <label htmlFor="month">Month</label>
+            <select
+              value={expirationMonth}
+              onChange={(e) => setExpirationMonth(e.target.value)}
+              id="month"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <label htmlFor="year">Year</label>
+            <select
+              value={expirationYear}
+              onChange={(e) => setExpirationYear(e.target.value)}
+              id="year"
+            >
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+            <label htmlFor="cvv">CVV</label>
             <input
               type="text"
               value={cvv}
               onChange={(e) => setCvv(e.target.value)}
-              placeholder="cvv"
+              placeholder="258"
+              id="cvv"
             />
           </form>
         </div>
+        <div className="checkout__order__button">Process Payment</div>
       </div>
     );
   } else {
