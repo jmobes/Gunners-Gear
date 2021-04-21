@@ -7,6 +7,7 @@ import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Jackets = (props) => {
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -17,7 +18,7 @@ const Jackets = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occurred");
       }
       setProducts(data);
     };
@@ -26,7 +27,7 @@ const Jackets = (props) => {
 
   return (
     <section className="jackets-container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="jackets__card">
@@ -59,7 +60,10 @@ const Jackets = (props) => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="error">{error}</div>
+      )}
     </section>
   );
 };

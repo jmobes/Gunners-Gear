@@ -7,6 +7,7 @@ import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Players = (props) => {
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +18,7 @@ const Players = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occurred");
       }
 
       setProducts(data);
@@ -27,7 +28,7 @@ const Players = (props) => {
 
   return (
     <section className="players__container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="player__card card">
@@ -65,7 +66,10 @@ const Players = (props) => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="error">{error}</div>
+      )}
     </section>
   );
 };

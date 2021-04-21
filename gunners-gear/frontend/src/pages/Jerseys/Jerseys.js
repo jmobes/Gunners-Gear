@@ -18,8 +18,7 @@ const Jersey = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        setError("A connection error has occured");
-        console.error(err);
+        setError("A connection error has occurred");
       }
 
       setProducts(data);
@@ -63,7 +62,7 @@ const Jersey = (props) => {
           );
         })
       ) : (
-        <div>{error}</div>
+        <div className="error">{error}</div>
       )}
     </section>
   );
