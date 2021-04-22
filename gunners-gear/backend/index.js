@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const products = require("./routes/products.js");
 const users = require("./routes/users");
-const carts = require("./routes/carts");
+const orders = require("./routes/orders");
 const ClientError = require("./models/ClientError.js");
 
 mongoose
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use(express.static("public"));
 app.use("/api/products", products);
 app.use("/api/users", users);
-app.use("/api/user/cart", carts);
+app.use("/api/user/orders", orders);
 
 app.use((req, res, next) => {
   const error = new ClientError("Could not find this route", 404);
