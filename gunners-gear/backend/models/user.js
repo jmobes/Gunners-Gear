@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const passwordComplexity = require("joi-password-complexity");
 const { productSchema } = require("./product");
 
 const User = mongoose.model(
@@ -18,17 +19,23 @@ const User = mongoose.model(
       minlength: 5,
       maxlength: 1024,
     },
-    orders: {
-      type: [productSchema],
-      required: true,
-    },
+    orders: [
+      {
+        products: [productSchema],
+        dateOrdered: {
+          type: Date,
+          default: Date.now,
+          required: true,
+        },
+      },
+    ],
   })
 );
 
 function validateUser(user) {
   let schema = Joi.object({
     email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().min(5).max(255).required(),
+    password: passwordComplexity().required(),
   });
 
   return schema.validate(user);

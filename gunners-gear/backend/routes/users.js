@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const ClientError = require("../models/ClientError");
 const auth = require("../middleware/auth");
+const jwt_decode = require("jwt-decode");
 require("dotenv").config();
 
 router.get("/", auth, async (req, res, next) => {
@@ -18,7 +19,6 @@ router.get("/", auth, async (req, res, next) => {
 });
 
 router.get("/logout", (req, res, next) => {
-  console.log("ENTERED LOGOUT ENDPOINT");
   res
     .cookie("token", "", {
       httpOnly: true,
@@ -27,12 +27,17 @@ router.get("/logout", (req, res, next) => {
     .send("logged out");
 });
 
-router.get("/:id", async (req, res, next) => {
-  console.log("ENTERED GET BY ID ENDPOINT");
+router.get("/:id", auth, async (req, res, next) => {
   const id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(id))
     return next(new ClientError("Invalid ID", 400));
 
+  const token = req.cookies.token;
+  const decoded = jwt_decode(token);
+  console.log("DECODED TOKEN: ", decoded);
+  if (decoded.user !== id) {
+    return next(new ClientError("Restricted access", 403));
+  }
   let user;
   try {
     user = await User.findById(id);
@@ -105,22 +110,6 @@ router.post("/login", async (req, res, next) => {
   } catch (ex) {
     return next(new ClientError(ex.message, 500));
   }
-});
-
-router.delete("/:id", async (req, res, next) => {
-  const userId = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
-    return next(new ClientError("Invalid ID", 400));
-  }
-
-  let user;
-  try {
-    user = await User.findByIdAndRemove(userId);
-  } catch (err) {
-    return next(new ClientError("Unexpected error", 500));
-  }
-
-  res.send(user);
 });
 
 module.exports = router;
