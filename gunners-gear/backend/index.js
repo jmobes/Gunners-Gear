@@ -7,6 +7,7 @@ const products = require("./routes/products.js");
 const users = require("./routes/users");
 const orders = require("./routes/orders");
 const ClientError = require("./models/ClientError.js");
+const cookieParser = require("cookie-parser");
 
 mongoose
   .connect(process.env.CONNECTION_STRING, {
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static("public"));
+app.use(cookieParser());
 app.use("/api/products", products);
 app.use("/api/users", users);
 app.use("/api/user/orders", orders);

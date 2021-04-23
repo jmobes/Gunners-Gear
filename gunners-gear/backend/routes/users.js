@@ -5,9 +5,10 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const ClientError = require("../models/ClientError");
+const auth = require("../middleware/auth");
 require("dotenv").config();
 
-router.get("/", async (req, res, next) => {
+router.get("/", auth, async (req, res, next) => {
   try {
     const users = await User.find().sort("email");
     res.status(200).send(users);
@@ -16,7 +17,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/logout", (req, res, next) => {
+  console.log("ENTERED LOGOUT ENDPOINT");
+  res
+    .cookie("token", "", {
+      httpOnly: true,
+      expires: new Date(0),
+    })
+    .send("logged out");
+});
+
 router.get("/:id", async (req, res, next) => {
+  console.log("ENTERED GET BY ID ENDPOINT");
   const id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(id))
     return next(new ClientError("Invalid ID", 400));
@@ -89,7 +101,7 @@ router.post("/login", async (req, res, next) => {
       process.env.JWT_SECRET_KEY
     );
 
-    res.cookie("token", token, { httpOnly: true }).send();
+    res.cookie("token", token, { httpOnly: true }).send("logged in");
   } catch (ex) {
     return next(new ClientError(ex.message, 500));
   }
