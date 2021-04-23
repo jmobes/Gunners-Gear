@@ -154,7 +154,7 @@ const App = () => {
             />
           </Route>
         </Switch>
-        <Redirect to="/cart" />
+        <Redirect to="/" />
         <Footer />
       </Router>
     );

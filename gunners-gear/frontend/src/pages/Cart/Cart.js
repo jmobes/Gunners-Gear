@@ -7,7 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 const Cart = (props) => {
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [enterShippingInfo, setEnterShippingInfo] = useState(true);
+  const [enterShippingInfo, setEnterShippingInfo] = useState(false);
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -18,6 +18,7 @@ const Cart = (props) => {
   const [expirationYear, setExpirationYear] = useState("Year");
   const [cvv, setCvv] = useState("");
   const [placeOrder, setPlaceOrder] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     setProducts([]);
@@ -54,139 +55,144 @@ const Cart = (props) => {
       !expirationYear ||
       !cvv
     ) {
-      console.log("PLEASE ENTER ALL INFORMATION!");
+      setError("Please complete delivery and payment information");
     }
     if (isNaN(zip)) {
-      console.log("INVALID ZIP");
+      setError("Invalid zip code");
     }
     if (isNaN(cvv)) {
-      console.log("INVALID CVV");
+      setError("Invalid ccv");
     }
   };
 
   let view;
   if (enterShippingInfo) {
     view = (
-      <div className="checkout__order">
-        <div className="checkout__order__shipment">
-          Delivery Address
-          <form className="checkout__order__shipment__address">
-            <label htmlFor="fname">Full Name</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="John Smith"
-              id="fname"
-            />
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="12345 Gooner Ave"
-              id="address"
-            />
-            <label htmlFor="city">City</label>
-            <input
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Los Angeles"
-              id="city"
-            />
-            <label htmlFor="state">State</label>
-            <input
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              placeholder="California"
-              id="state"
-            />
-            <label htmlFor="zip">Zip Code</label>
-            <input
-              type="text"
-              value={zip}
-              onChange={(e) => {
-                if (isNaN(e.target.value)) {
-                  return;
-                }
-                setZip(e.target.value);
-              }}
-              placeholder="53219"
-              id="zip"
-              maxLength="5"
-            />
-          </form>
+      <React.Fragment>
+        <div onClick={() => setEnterShippingInfo(false)} className="back-btn">
+          Back
         </div>
-        <div className="checkout__order__payment">
-          Payment
-          <form className="checkout__order__payment__info">
-            <label htmlFor="card">Card Number</label>
-            <input
-              type="text"
-              value={cardNumber}
-              onChange={(e) => {
-                if (isNaN(e.target.value)) {
-                  return;
-                }
-                setCardNumber(e.target.value);
-              }}
-              placeholder="1111 2222 3333 4444"
-              id="card"
-              maxLength="16"
-            />
-            <label htmlFor="month">Month</label>
-            <select
-              value={expirationMonth}
-              onChange={(e) => setExpirationMonth(e.target.value)}
-              id="month"
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <label htmlFor="year">Year</label>
-            <select
-              value={expirationYear}
-              onChange={(e) => setExpirationYear(e.target.value)}
-              id="year"
-            >
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-            </select>
-            <label htmlFor="cvv">CVV</label>
-            <input
-              type="text"
-              value={cvv}
-              onChange={(e) => {
-                if (isNaN(e.target.value)) {
-                  return;
-                }
-                setCvv(e.target.value);
-              }}
-              placeholder="258"
-              id="cvv"
-              maxLength="3"
-            />
-          </form>
+        <div className="checkout__order">
+          <div className="checkout__order__shipment">
+            Delivery Address
+            <form className="checkout__order__shipment__address">
+              <label htmlFor="fname">Full Name</label>
+              <input
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="John Smith"
+                id="fname"
+              />
+              <label htmlFor="address">Address</label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="12345 Gooner Ave"
+                id="address"
+              />
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Los Angeles"
+                id="city"
+              />
+              <label htmlFor="state">State</label>
+              <input
+                type="text"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                placeholder="California"
+                id="state"
+              />
+              <label htmlFor="zip">Zip Code</label>
+              <input
+                type="text"
+                value={zip}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) {
+                    return;
+                  }
+                  setZip(e.target.value);
+                }}
+                placeholder="53219"
+                id="zip"
+                maxLength="5"
+              />
+            </form>
+          </div>
+          <div className="checkout__order__payment">
+            Payment
+            <form className="checkout__order__payment__info">
+              <label htmlFor="card">Card Number</label>
+              <input
+                type="text"
+                value={cardNumber}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) {
+                    return;
+                  }
+                  setCardNumber(e.target.value);
+                }}
+                placeholder="1111 2222 3333 4444"
+                id="card"
+                maxLength="16"
+              />
+              <label htmlFor="month">Month</label>
+              <select
+                value={expirationMonth}
+                onChange={(e) => setExpirationMonth(e.target.value)}
+                id="month"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <label htmlFor="year">Year</label>
+              <select
+                value={expirationYear}
+                onChange={(e) => setExpirationYear(e.target.value)}
+                id="year"
+              >
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+              </select>
+              <label htmlFor="cvv">CVV</label>
+              <input
+                type="text"
+                value={cvv}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) {
+                    return;
+                  }
+                  setCvv(e.target.value);
+                }}
+                placeholder="258"
+                id="cvv"
+                maxLength="3"
+              />
+            </form>
+          </div>
+          <div onClick={processPayment} className="checkout__order__button">
+            Process Payment <span>${totalPrice}</span>
+          </div>
         </div>
-        <div onClick={processPayment} className="checkout__order__button">
-          Process Payment
-        </div>
-      </div>
+      </React.Fragment>
     );
   } else {
     view = (
