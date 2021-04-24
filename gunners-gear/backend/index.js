@@ -44,8 +44,9 @@ app.use((error, req, res, next) => {
   if (res.headerSent) {
     return next(error);
   }
-  res.status(error.code || 500);
-  res.send(error.message || "An unknown error occurred");
+  res.status(error.code || 500).json({
+    error: error.message || "An unknown error occurred",
+  });
 });
 
 let port = process.env.PORT || 5000;

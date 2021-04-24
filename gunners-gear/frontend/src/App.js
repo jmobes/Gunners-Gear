@@ -24,6 +24,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const addItemToCart = (newProduct) => {
     const productId = newProduct.item;
