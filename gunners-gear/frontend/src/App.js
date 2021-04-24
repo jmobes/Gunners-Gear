@@ -18,6 +18,7 @@ import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
+import Register from "./pages/Register/Register";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -112,6 +113,9 @@ const App = () => {
               updateQuantity={updateQuantity}
             />
           </Route>
+          <Route path="/account" exact>
+            <Register />
+          </Route>
         </Switch>
         <Redirect to="/" />
         <Footer />
@@ -153,8 +157,11 @@ const App = () => {
               updateQuantity={updateQuantity}
             />
           </Route>
+          <Route path="/account" exact>
+            <Register />
+          </Route>
         </Switch>
-        <Redirect to="/" />
+        <Redirect to="/account" />
         <Footer />
       </Router>
     );

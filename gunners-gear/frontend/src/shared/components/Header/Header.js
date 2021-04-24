@@ -9,6 +9,7 @@ import sprite from "../../../images/sprites.svg";
 
 const Header = (props) => {
   const [showLinks, setShowLinks] = useState(false);
+  const [userClicked, setUserClicked] = useState(false);
 
   return (
     <header className="header_container">
@@ -21,9 +22,11 @@ const Header = (props) => {
           <span className="second-word">Gear</span>
         </h1>
         <div className="header__icons">
-          <svg className="icon icon-user">
-            <use href={sprite + "#user"}></use>
-          </svg>
+          <Link to="/account">
+            <svg className="icon icon-user">
+              <use href={sprite + "#user"}></use>
+            </svg>
+          </Link>
           <svg
             onClick={() => setShowLinks(!showLinks)}
             className="icon icon-menu"
