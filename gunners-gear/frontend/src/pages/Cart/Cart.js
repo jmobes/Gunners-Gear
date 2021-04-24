@@ -189,7 +189,7 @@ const Cart = (props) => {
             </form>
           </div>
           <div onClick={processPayment} className="checkout__order__button">
-            Process Payment <span>${totalPrice}</span>
+            Place Order <span>${totalPrice}</span>
           </div>
         </div>
       </React.Fragment>
