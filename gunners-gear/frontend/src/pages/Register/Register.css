@@ -136,7 +136,7 @@
   color: red;
   margin-top: 1.5rem;
 }
-.logout__container {
+.account__container {
   display: flex;
   flex-direction: column;
   font-size: 3rem;

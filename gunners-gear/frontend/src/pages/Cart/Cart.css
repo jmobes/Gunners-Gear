@@ -142,7 +142,7 @@
   font-size: 3rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 5rem;
+  margin-top: 2rem;
   cursor: pointer;
 }
 .checkout__order__button:hover {
@@ -188,6 +188,11 @@
 }
 .back-btn:hover {
   background: var(--color-red-three);
+}
+.checkout__order__error {
+  color: var(--color-red-primary);
+  font-size: 2rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 775px) {

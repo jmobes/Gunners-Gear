@@ -44,6 +44,7 @@ const Cart = (props) => {
   }, [products, props.cart]);
 
   const processPayment = () => {
+    setError("");
     if (
       !fullName ||
       !address ||
@@ -56,12 +57,15 @@ const Cart = (props) => {
       !cvv
     ) {
       setError("Please complete delivery and payment information");
+      return;
     }
     if (isNaN(zip)) {
       setError("Invalid zip code");
+      return;
     }
     if (isNaN(cvv)) {
       setError("Invalid ccv");
+      return;
     }
   };
 
@@ -188,6 +192,7 @@ const Cart = (props) => {
               />
             </form>
           </div>
+          {error ? <p className="checkout__order__error">{error}</p> : null}
           <div onClick={processPayment} className="checkout__order__button">
             Place Order <span>${totalPrice}</span>
           </div>

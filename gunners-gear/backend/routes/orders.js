@@ -3,18 +3,26 @@ const mongoose = require("mongoose");
 const ClientError = require("../models/ClientError");
 const validate = require("../models/order");
 const { User } = require("../models/user");
+const auth = require("../middleware/auth");
+const jwt_decode = require("jwt-decode");
 const router = express.Router();
 
-router.post("/:uid", async (req, res, next) => {
+router.post("/:uid", auth, async (req, res, next) => {
   const userId = req.params.uid;
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return next(new ClientError("ID is invalid", 400));
   }
-
   const { error } = validate(req.body);
   if (error) {
     return next(new ClientError(error.details[0].message), 400);
   }
+
+  const token = req.headers.token;
+  const decoded = jwt_decode(token);
+  if (decoded.user !== userId) {
+    return next(new ClientError("Restricted access", 403));
+  }
+
   const { products } = req.body;
 
   let user;

@@ -86,7 +86,9 @@ const Register = (props) => {
 
   if (viewLogin && props.isLoggedIn) {
     view = (
-      <div className="logout__container">
+      <div className="account__container">
+        <p className="orders__message">See your order history</p>
+        <div className="orders__button">Past Orders</div>
         <p className="logout__header">Click the button below to logout</p>
         <div onClick={logout} className="logout__button">
           Logout
