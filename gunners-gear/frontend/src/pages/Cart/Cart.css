@@ -148,6 +148,13 @@
 .checkout__order__button:hover {
   background: var(--color-blue-secondary);
 }
+.checkout__order__error {
+  color: var(--color-red-primary);
+  font-size: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
 .checkout__order__shipment {
   font-size: 3rem;
   color: var(--color-blue-primary);
@@ -188,11 +195,6 @@
 }
 .back-btn:hover {
   background: var(--color-red-three);
-}
-.checkout__order__error {
-  color: var(--color-red-primary);
-  font-size: 2rem;
-  margin-top: 2rem;
 }
 
 @media (max-width: 775px) {

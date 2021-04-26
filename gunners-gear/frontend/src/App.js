@@ -124,6 +124,8 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
+              id={id}
+              token={token}
             />
           </Route>
           <Route path="/account" exact>
@@ -168,6 +170,8 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
+              id={id}
+              token={token}
             />
           </Route>
           <Route path="/account" exact>

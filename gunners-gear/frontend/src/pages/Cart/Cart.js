@@ -14,8 +14,8 @@ const Cart = (props) => {
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [expirationMonth, setExpirationMonth] = useState("Month");
-  const [expirationYear, setExpirationYear] = useState("Year");
+  const [expirationMonth, setExpirationMonth] = useState("1");
+  const [expirationYear, setExpirationYear] = useState("2021");
   const [cvv, setCvv] = useState("");
   const [placeOrder, setPlaceOrder] = useState(false);
   const [error, setError] = useState();
@@ -27,6 +27,7 @@ const Cart = (props) => {
         fetch(`http://localhost:5000/api/products/${product.item}`)
           .then((res) => res.json())
           .then((prod) => {
+            console.log("PRODUCT: ", prod);
             setProducts((oldArr) => [...oldArr, prod]);
           })
           .catch((err) => console.error(err));
@@ -43,7 +44,7 @@ const Cart = (props) => {
     setTotalPrice(price.toFixed(2));
   }, [products, props.cart]);
 
-  const processPayment = () => {
+  const processPayment = async () => {
     setError("");
     if (
       !fullName ||
@@ -59,13 +60,45 @@ const Cart = (props) => {
       setError("Please complete delivery and payment information");
       return;
     }
-    if (isNaN(zip)) {
+    if (isNaN(zip) || zip.length !== 5) {
       setError("Invalid zip code");
       return;
     }
-    if (isNaN(cvv)) {
+    if (isNaN(cvv) || cvv.length !== 3) {
       setError("Invalid ccv");
       return;
+    }
+    if (cardNumber.length !== 16) {
+      setError("Invalid card number");
+      return;
+    }
+    const inputDate = new Date();
+    inputDate.setFullYear(expirationYear, expirationMonth - 1, 1);
+    const today = new Date();
+    today.setFullYear(today.getFullYear(), today.getMonth(), 1);
+    if (inputDate.getTime() < today.getTime()) {
+      setError("Your card is expired");
+      return;
+    }
+    if (!props.id || !props.token) {
+      setError("You need to log in before placing an order");
+      return;
+    }
+
+    try {
+      const options = {
+        method: "POST",
+        headers: { token: props.token, "Content-Type": "application/json" },
+        body: JSON.stringify({ products: products }),
+      };
+      const response = await fetch(
+        `http://localhost:5000/api/user/orders/${props.id}`,
+        options
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      setError(err.message);
     }
   };
 
