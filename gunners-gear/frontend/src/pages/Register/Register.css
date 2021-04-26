@@ -70,6 +70,11 @@
 .login__signup__link:hover {
   color: var(--color-red-primary);
 }
+.login__error {
+  font-size: 2rem;
+  color: red;
+  margin-top: 1.5rem;
+}
 
 .signup__title {
   color: var(--color-blue-primary);
@@ -130,6 +135,29 @@
   font-size: 2rem;
   color: red;
   margin-top: 1.5rem;
+}
+.logout__container {
+  display: flex;
+  flex-direction: column;
+  font-size: 3rem;
+  align-items: center;
+  height: 60vh;
+  margin-top: 5rem;
+  text-align: center;
+}
+.logout__header {
+  font-family: "Russo One", sans-serif;
+}
+.logout__button {
+  margin-top: 5rem;
+  background-color: var(--color-blue-primary);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.logout__button:hover {
+  background-color: var(--color-blue-secondary);
 }
 .loader__ctn {
   position: absolute;

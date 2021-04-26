@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,6 +25,18 @@ const App = () => {
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState();
+  const [id, setId] = useState();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData && userData.token && userData.id) {
+      setIsLoggedIn(true);
+      setToken(userData.token);
+      setId(userData.id);
+      console.log("USER IS STILL LOGGED IN!!!");
+    }
+  }, []);
 
   const addItemToCart = (newProduct) => {
     const productId = newProduct.item;
@@ -115,7 +127,7 @@ const App = () => {
             />
           </Route>
           <Route path="/account" exact>
-            <Register />
+            <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
         </Switch>
         <Redirect to="/" />
@@ -159,10 +171,10 @@ const App = () => {
             />
           </Route>
           <Route path="/account" exact>
-            <Register />
+            <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
         </Switch>
-        <Redirect to="/account" />
+        <Redirect to="/" />
         <Footer />
       </Router>
     );

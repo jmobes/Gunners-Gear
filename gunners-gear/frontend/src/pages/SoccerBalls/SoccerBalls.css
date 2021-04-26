@@ -41,3 +41,10 @@
 .ball__card__link {
   grid-area: button;
 }
+
+@media (max-width: 435px) {
+  .ball__card__image {
+    width: 250px;
+    height: 250px;
+  }
+}

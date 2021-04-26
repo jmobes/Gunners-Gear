@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./Register.css";
+import { useHistory } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [viewLogin, setViewLogin] = useState(true);
+  const [loginError, setLoginError] = useState("");
   const [signupError, setSignupError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +18,7 @@ const Register = () => {
     setIsLoading(true);
     setSignupError("");
     e.preventDefault();
-    if (!setSignupEmail || !signupPassword) {
+    if (!signupEmail || !signupPassword) {
       setSignupError("Enter an email and password");
       setIsLoading(false);
       return;
@@ -31,19 +32,68 @@ const Register = () => {
       const data = await response.json();
       if (!response.ok) {
         setSignupError(data.error);
-        throw new Error();
+        setIsLoading(false);
+        return;
       }
       history.push("/");
       setIsLoading(false);
     } catch (err) {
-      console.log(err);
+      setSignupError("Server error, try again later");
       setIsLoading(false);
     }
   };
 
+  const login = async (e) => {
+    setIsLoading(true);
+    setLoginError("");
+    e.preventDefault();
+    if (!email || !password) {
+      setLoginError("Enter an email and password");
+      setIsLoading(false);
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, password: password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setLoginError(data.error);
+        setIsLoading(false);
+        return;
+      }
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ id: data.user, token: data.token })
+      );
+      history.goBack();
+      setIsLoading(false);
+      props.setIsLoggedIn(true);
+    } catch (err) {
+      setLoginError(err.message);
+      setIsLoading(false);
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("userData");
+    props.setIsLoggedIn(false);
+  };
+
   let view;
 
-  if (viewLogin) {
+  if (viewLogin && props.isLoggedIn) {
+    view = (
+      <div className="logout__container">
+        <p className="logout__header">Click the button below to logout</p>
+        <div onClick={logout} className="logout__button">
+          Logout
+        </div>
+      </div>
+    );
+  } else if (viewLogin && !props.isLoggedIn) {
     view = (
       <React.Fragment>
         {isLoading ? (
@@ -53,26 +103,29 @@ const Register = () => {
         ) : null}
         <div className="register">
           <h3 className="login__title">Login</h3>
-          <form className="login">
-            <label className="login__label--email" htmlFor="email">
+          {loginError ? <p className="login__error">{loginError}</p> : null}
+          <form onSubmit={login} className="login">
+            <label className="login__label--email" htmlFor="login-email">
               Email
             </label>
             <input
               type="email"
               value={email}
-              id="email"
+              id="login-email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label className="login__label--password" htmlFor="password">
+            <label className="login__label--password" htmlFor="login-password">
               Password
             </label>
             <input
-              type="text"
+              type="password"
               value={password}
-              id="password"
+              id="login-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="login__button">Continue</button>
+            <button type="submit" className="login__button">
+              Continue
+            </button>
             <h6 className="login__guest">
               Login as <span className="login__guest__link">GUEST</span>
             </h6>
@@ -114,7 +167,7 @@ const Register = () => {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               value={signupPassword}
               id="password"
               onChange={(e) => setSignupPassword(e.target.value)}
