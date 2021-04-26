@@ -2,12 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-
 const products = require("./routes/products.js");
 const users = require("./routes/users");
 const orders = require("./routes/orders");
 const ClientError = require("./models/ClientError.js");
-const cookieParser = require("cookie-parser");
 
 mongoose
   .connect(process.env.CONNECTION_STRING, {
@@ -19,6 +17,7 @@ mongoose
   .catch((err) => console.error(err.message));
 
 app.use(express.json());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -27,7 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static("public"));
-app.use(cookieParser());
 app.use("/api/products", products);
 app.use("/api/users", users);
 app.use("/api/user/orders", orders);
@@ -38,14 +36,12 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
-  console.log("ERROR: ", error);
-  console.log("ERROR MESSAGE: ", error.message);
-  console.log("ERROR CODE: ", error.code);
   if (res.headerSent) {
     return next(error);
   }
-  res.status(error.code || 500);
-  res.send(error.message || "An unknown error occurred");
+  res.status(error.code || 500).json({
+    error: error.message || "An unknown error occurred",
+  });
 });
 
 let port = process.env.PORT || 5000;

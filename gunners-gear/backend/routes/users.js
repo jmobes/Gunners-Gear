@@ -32,7 +32,7 @@ router.get("/:id", auth, async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(id))
     return next(new ClientError("Invalid ID", 400));
 
-  const token = req.cookies.token;
+  const token = req.headers.token;
   const decoded = jwt_decode(token);
   console.log("DECODED TOKEN: ", decoded);
   if (decoded.user !== id) {
@@ -68,24 +68,26 @@ router.post("/", async (req, res, next) => {
 
     const savedUser = await user.save();
 
-    const token = jwt.sign({ user: savedUser._id }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign(
+      { user: savedUser._id },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1h" }
+    );
 
-    res
-      .cookie("token", token, {
-        httpOnly: true,
-      })
-      .send({
-        email: user.email,
-        _id: user._id,
-      });
+    res.status(201).json({
+      email: user.email,
+      _id: user._id,
+      token: token,
+    });
   } catch (err) {
     return next(new ClientError("Unexpected error", 500));
   }
 });
 
 router.post("/login", async (req, res, next) => {
-  const { error } = validate(req.body);
-  if (error) return next(new ClientError(error.details[0].message, 400));
+  if (!req.body.email || !req.body.password) {
+    return next(new ClientError("Please enter an email and password", 401));
+  }
 
   try {
     const existingUser = await User.findOne({ email: req.body.email });
@@ -103,10 +105,14 @@ router.post("/login", async (req, res, next) => {
       {
         user: existingUser._id,
       },
-      process.env.JWT_SECRET_KEY
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1h" }
     );
 
-    res.cookie("token", token, { httpOnly: true }).send("logged in");
+    res.json({
+      user: existingUser._id,
+      token: token,
+    });
   } catch (ex) {
     return next(new ClientError(ex.message, 500));
   }

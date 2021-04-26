@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,11 +18,25 @@ import SoccerBalls from "./pages/SoccerBalls/SoccerBalls";
 import Vintage from "./pages/Vintage/Vintage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
+import Register from "./pages/Register/Register";
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState();
+  const [id, setId] = useState();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData && userData.token && userData.id) {
+      setIsLoggedIn(true);
+      setToken(userData.token);
+      setId(userData.id);
+      console.log("USER IS STILL LOGGED IN!!!");
+    }
+  }, []);
 
   const addItemToCart = (newProduct) => {
     const productId = newProduct.item;
@@ -112,6 +126,9 @@ const App = () => {
               updateQuantity={updateQuantity}
             />
           </Route>
+          <Route path="/account" exact>
+            <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          </Route>
         </Switch>
         <Redirect to="/" />
         <Footer />
@@ -152,6 +169,9 @@ const App = () => {
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
             />
+          </Route>
+          <Route path="/account" exact>
+            <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
         </Switch>
         <Redirect to="/" />
