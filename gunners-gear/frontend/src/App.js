@@ -25,16 +25,13 @@ const App = () => {
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState();
-  const [id, setId] = useState();
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.token && userData.id) {
       setIsLoggedIn(true);
       setToken(userData.token);
-      setId(userData.id);
-      console.log("USER IS STILL LOGGED IN!!!");
     }
   }, []);
 
@@ -124,8 +121,7 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
-              id={id}
-              token={token}
+              setCart={setCart}
             />
           </Route>
           <Route path="/account" exact>
@@ -170,8 +166,7 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
-              id={id}
-              token={token}
+              setCart={setCart}
             />
           </Route>
           <Route path="/account" exact>

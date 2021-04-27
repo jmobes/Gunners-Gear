@@ -196,6 +196,31 @@
 .back-btn:hover {
   background: var(--color-red-three);
 }
+.order__placed {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Russo One", sans-serif;
+  padding: 0rem 2rem;
+  height: 60vh;
+}
+.order__placed a {
+  color: unset;
+}
+.order__placed p {
+  margin-top: 2rem;
+}
+.order__placed p:nth-child(2) {
+  font-size: 2rem;
+}
+.order__placed p span {
+  border-bottom: 5px solid var(--color-red-primary);
+  cursor: pointer;
+}
+.order__placed p span:hover {
+  color: var(--color-red-primary);
+}
 
 @media (max-width: 775px) {
   .checkout__order__shipment,

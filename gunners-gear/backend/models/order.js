@@ -12,6 +12,11 @@ function validateOrder(order) {
           description: Joi.string().required(),
           price: Joi.number().min(0).required(),
           category: Joi.string().required(),
+          country: Joi.string(),
+          first: Joi.string(),
+          last: Joi.string(),
+          number: Joi.string(),
+          position: Joi.string(),
         })
       )
       .min(1)

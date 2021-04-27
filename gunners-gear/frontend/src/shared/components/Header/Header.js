@@ -9,7 +9,6 @@ import sprite from "../../../images/sprites.svg";
 
 const Header = (props) => {
   const [showLinks, setShowLinks] = useState(false);
-  const [userClicked, setUserClicked] = useState(false);
 
   return (
     <header className="header_container">
