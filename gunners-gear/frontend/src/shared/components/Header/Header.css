@@ -125,6 +125,7 @@
   list-style: none;
   background: var(--color-blue-primary);
   padding: 1rem;
+  border-radius: 10px;
 }
 .nav__list__item__mobile {
   text-decoration: none;

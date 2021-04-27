@@ -2,13 +2,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 3rem;
-  padding: 5rem;
+  padding: 3rem;
 }
 .jackets__card {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto-fit);
-  box-shadow: 0 5px 10px rgba(0,0,0,.7);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
 }
 .jackets__card__image {
@@ -19,15 +19,15 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, auto-fit);
   grid-template-areas:
-  "title title"
-  "price price"
-  "button button";
+    "title title"
+    "price price"
+    "button button";
   grid-row-gap: 1.5rem;
 }
 .jackets__card__title {
   font-size: 2.5rem;
   text-align: center;
-  color: rgba(119,119,119);
+  color: rgba(119, 119, 119);
   grid-area: title;
 }
 .jackets__card__price {
@@ -36,4 +36,7 @@
   color: var(--color-red-primary);
   grid-area: price;
   align-self: center;
+}
+.jackets__card__link {
+  grid-area: button;
 }

@@ -1,12 +1,12 @@
-:root{
+:root {
   --color-red-primary: rgb(252, 0, 0);
-  --color-red-secondary: rgb(218,0,34);
+  --color-red-secondary: rgb(218, 0, 34);
   --color-red-three: rgb(136, 2, 23);
-  --color-blue-primary: rgb(6,22,90);
+  --color-blue-primary: rgb(6, 22, 90);
   --color-blue-secondary: rgb(8, 36, 162);
   --color-gray-light: #faf9f9;
   --color-gray-dark: #777;
-  --color-brown-primary: rgb(159,147,77);
+  --color-brown-primary: rgb(159, 147, 77);
 }
 
 * {
@@ -24,4 +24,15 @@ html {
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.error {
+  font-size: 2rem;
+  text-align: center;
+}
+
+#root {
+  position: relative;
 }

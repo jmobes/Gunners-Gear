@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Accessories.css";
 
@@ -6,6 +7,7 @@ import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Accessories = (props) => {
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,17 +18,18 @@ const Accessories = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occurred");
       }
-
       setProducts(data);
     };
     fetchData();
   }, []);
 
+  useEffect(() => {});
+
   return (
     <section className="accessories-container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="accessories__card">
@@ -37,25 +40,34 @@ const Accessories = (props) => {
               ></img>
               <div className="accessories__card__details">
                 <h3 className="accessories__card__title">{product.title}</h3>
-                <h4 className="accessories__card__price">${product.price}</h4>
-                {/* <CardButton addItem={props.addItem} className="card__button" /> */}
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <h4 className="accessories__card__price">
+                  ${product.price.toFixed(2)}
+                </h4>
+                <Link
+                  className="accessories__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                      props.viewProduct(true);
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="error">{error}</div>
+      )}
     </section>
   );
 };

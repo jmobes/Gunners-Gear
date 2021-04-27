@@ -7,8 +7,12 @@
   font-size: 2.5rem;
   background-color: var(--color-red-primary);
   color: #fff;
+  height: 100%;
 }
 .card__button:hover {
   background-color: var(--color-red-three);
   cursor: pointer;
+}
+a .card__button {
+  width: 100%;
 }

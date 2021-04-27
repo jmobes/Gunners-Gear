@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Vintage.css";
 
-import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Vintage = (props) => {
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +18,7 @@ const Vintage = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occurred");
       }
 
       setProducts(data);
@@ -27,7 +28,7 @@ const Vintage = (props) => {
 
   return (
     <section className="vintage-container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="vintage__card">
@@ -39,23 +40,31 @@ const Vintage = (props) => {
               <div className="vintage__card__details">
                 <h3 className="vintage__card__title">{product.title}</h3>
                 <h4 className="vintage__card__price">{product.price}</h4>
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <Link
+                  className="vintage__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                      props.viewProduct(true);
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="error">{error}</div>
+      )}
     </section>
   );
 };

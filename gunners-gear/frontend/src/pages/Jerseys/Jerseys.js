@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Jerseys.css";
 
-import CardButton from "../../shared/components/CardButton/CardButton";
 import DetailsButton from "../../shared/components/DetailsButton/DetailsButton";
 
 const Jersey = (props) => {
-  const incrementCart = props.incrementCart;
-
   const [products, setProducts] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +18,7 @@ const Jersey = (props) => {
         );
         data = await response.json();
       } catch (err) {
-        throw new Error(err);
+        setError("A connection error has occurred");
       }
 
       setProducts(data);
@@ -29,7 +28,7 @@ const Jersey = (props) => {
 
   return (
     <section className="jerseys-container">
-      {products &&
+      {products ? (
         products.map((product) => {
           return (
             <div key={product._id} className="jersey__card">
@@ -41,23 +40,30 @@ const Jersey = (props) => {
               <div className="jersey__card__details">
                 <h3 className="jersey__card__title">{product.title}</h3>
                 <h4 className="jersey__card__price">{product.price}</h4>
-                <DetailsButton
-                  addItem={props.addItem}
-                  viewProduct={() => {
-                    props.itemDetails({
-                      title: product.title,
-                      price: product.price,
-                      image: product.image,
-                      description: product.description,
-                      id: product._id,
-                    });
-                    props.viewProduct(true);
-                  }}
-                />
+                <Link
+                  className="jersey__card__link"
+                  to={`product/${product._id}`}
+                >
+                  <DetailsButton
+                    addItem={props.addItem}
+                    viewProduct={() => {
+                      props.itemDetails({
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        id: product._id,
+                      });
+                    }}
+                  />
+                </Link>
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="error">{error}</div>
+      )}
     </section>
   );
 };

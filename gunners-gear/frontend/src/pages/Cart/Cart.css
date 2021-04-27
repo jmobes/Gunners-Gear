@@ -1,0 +1,277 @@
+.checkout__header {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--color-blue-primary);
+}
+.checkout__empty {
+  text-align: center;
+  font-size: 2rem;
+}
+.checkout-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 3rem;
+  padding: 2rem 3rem;
+}
+.checkout__card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto-fit);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+}
+.checkout__card__image {
+  justify-self: center;
+  height: 250px;
+}
+.checkout__card__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto-fit);
+  grid-template-areas:
+    "title title"
+    "price price"
+    "button button";
+  grid-row-gap: 1.5rem;
+}
+.checkout__card__title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: rgba(119, 119, 119);
+  grid-area: title;
+}
+.checkout__card__price {
+  font-size: 3rem;
+  text-align: center;
+  color: var(--color-red-primary);
+  grid-area: price;
+  align-self: center;
+}
+.checkout__card__link {
+  grid-area: button;
+}
+.checkout__card__quantity {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.checkout__card__quantity__count {
+  margin-left: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 75px;
+}
+.checkout__card__quantity__count--text {
+  color: red;
+}
+.checkout__card__quantity__count__icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.checkout__card__quantity__count--minus,
+.checkout__card__quantity__count--add {
+  background-color: rgb(211, 95, 95);
+  padding: 0.25rem;
+  border-radius: 10%;
+  color: #fff;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.checkout__card__quantity__count--minus:hover,
+.checkout__card__quantity__count--add:hover {
+  background-color: rgb(202, 59, 59);
+}
+.checkout__card__remove {
+  width: 100%;
+  background-color: var(--color-red-primary);
+  color: #fff;
+  padding: 1rem;
+  font-size: 3rem;
+  margin-top: 1rem;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.checkout__card__remove:hover {
+  background-color: var(--color-red-three);
+}
+.checkout__price {
+  font-size: 2.5rem;
+  text-align: center;
+}
+.checkout__price--number {
+  color: var(--color-blue-primary);
+  font-weight: bold;
+}
+.checkout-container-height {
+  height: 70vh;
+}
+.checkout__buy {
+  margin: 1.5rem auto;
+  background-color: var(--color-blue-primary);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 3rem;
+  text-transform: capitalize;
+  width: 45%;
+  text-align: center;
+  cursor: pointer;
+}
+.checkout__buy:hover {
+  background-color: var(--color-blue-secondary);
+}
+
+.checkout__order {
+  display: flex;
+  padding: 0.5rem 2rem;
+  font-family: "Russo One", sans-serif;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.checkout__order > div {
+  width: 35%;
+}
+.checkout__order__button {
+  background-color: var(--color-blue-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 3rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.checkout__order__button:hover {
+  background: var(--color-blue-secondary);
+}
+.checkout__order__error {
+  color: var(--color-red-primary);
+  font-size: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+.checkout__order__shipment {
+  font-size: 3rem;
+  color: var(--color-blue-primary);
+}
+.checkout__order__shipment__address {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: var(--color-red-three);
+}
+.checkout__order__payment {
+  font-size: 3rem;
+  color: var(--color-blue-primary);
+}
+.checkout__order__payment__info {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: var(--color-red-three);
+}
+.checkout__order input,
+.checkout__order select {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+}
+.back-btn {
+  background: var(--color-red-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  width: 75px;
+  text-align: center;
+  margin: 0 0 1rem 2rem;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: var(--color-red-three);
+}
+.order__placed {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Russo One", sans-serif;
+  padding: 0rem 2rem;
+  height: 60vh;
+}
+.order__placed a {
+  color: unset;
+}
+.order__placed p {
+  margin-top: 2rem;
+}
+.order__placed p:nth-child(2) {
+  font-size: 2rem;
+}
+.order__placed p span {
+  color: var(--color-red-primary);
+  cursor: pointer;
+}
+
+@media (max-width: 775px) {
+  .checkout__order__shipment,
+  .checkout__order__payment {
+    font-size: 2.5rem;
+  }
+  .checkout__order__shipment__address,
+  .checkout__order__payment__info {
+    font-size: 1.5rem;
+  }
+  .checkout__order .checkout__order__button {
+    width: 80%;
+  }
+}
+@media (max-width: 705px) {
+  .checkout__buy {
+    font-size: 2.5rem;
+    width: 60%;
+  }
+}
+@media (max-width: 660px) {
+  .checkout__order {
+    flex-direction: column;
+    align-items: center;
+  }
+  .checkout__order > div {
+    width: 75%;
+  }
+  .checkout__order__payment {
+    margin-top: 1rem;
+  }
+  .back-btn {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 635px) {
+  .checkout__header {
+    margin-top: 2rem;
+  }
+  .checkout__order {
+    margin-top: 2rem;
+  }
+  .checkout__order .checkout__order__button {
+    width: 75%;
+  }
+}
+@media (max-width: 450px) {
+  .checkout__buy {
+    width: 75%;
+  }
+}
+@media (max-width: 435px) {
+  .checkout__card__image {
+    width: 250px;
+    height: 250px;
+  }
+}
