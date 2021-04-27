@@ -2,9 +2,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 1rem;
-
   margin-bottom: 3rem;
-  padding: 5rem;
+  padding: 3rem;
 }
 .player__card {
   background-color: #979797;

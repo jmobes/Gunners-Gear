@@ -44,6 +44,37 @@ const Register = (props) => {
     }
   };
 
+  const loginGuest = async () => {
+    setIsLoading(true);
+    setLoginError("");
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "guest@gmail.com",
+          password: "Guest123!",
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setLoginError(data.error);
+        setIsLoading(false);
+        return;
+      }
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ id: data.user, token: data.token })
+      );
+      history.goBack();
+      setIsLoading(false);
+      props.setIsLoggedIn(true);
+    } catch (err) {
+      setLoginError(err.message);
+      setIsLoading(false);
+    }
+  };
+
   const login = async (e) => {
     setIsLoading(true);
     setLoginError("");
@@ -131,7 +162,10 @@ const Register = (props) => {
               Continue
             </button>
             <h6 className="login__guest">
-              Login as <span className="login__guest__link">GUEST</span>
+              Login as{" "}
+              <span onClick={loginGuest} className="login__guest__link">
+                GUEST
+              </span>
             </h6>
             <h6 className="login__signup">
               Don't have an account? Signup{" "}
