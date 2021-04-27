@@ -7,6 +7,22 @@ const auth = require("../middleware/auth");
 const jwt_decode = require("jwt-decode");
 const router = express.Router();
 
+router.get("/:uid", async (req, res, next) => {
+  const userId = req.params.uid;
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return next(new ClientError("ID is invalid", 400));
+  }
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return next(new ClientError("User from userID was not found", 404));
+    }
+    res.json({ orders: user.orders });
+  } catch (err) {
+    return next(new ClientError("Server error"));
+  }
+});
+
 router.post("/:uid", auth, async (req, res, next) => {
   const userId = req.params.uid;
   if (!mongoose.Types.ObjectId.isValid(userId)) {

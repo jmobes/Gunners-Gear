@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
 import { useHistory } from "react-router-dom";
 
@@ -88,8 +89,9 @@ const Register = (props) => {
     view = (
       <div className="account__container">
         <p className="orders__message">See your order history</p>
-        <div className="orders__button">Past Orders</div>
-        <p className="logout__header">Click the button below to logout</p>
+        <div className="orders__button">
+          <Link to="/orders">Past Orders</Link>
+        </div>
         <div onClick={logout} className="logout__button">
           Logout
         </div>

@@ -19,6 +19,7 @@ import Vintage from "./pages/Vintage/Vintage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
 import Register from "./pages/Register/Register";
+import Orders from "./pages/Orders/Orders";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -127,6 +128,9 @@ const App = () => {
           <Route path="/account" exact>
             <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
+          <Route path="/orders">
+            <Orders />
+          </Route>
         </Switch>
         <Redirect to="/" />
         <Footer />
@@ -171,6 +175,9 @@ const App = () => {
           </Route>
           <Route path="/account" exact>
             <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
         <Redirect to="/" />

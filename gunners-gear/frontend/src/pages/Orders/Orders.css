@@ -1,0 +1,48 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  height: 100vh;
+  align-items: center;
+}
+.order__title {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-family: "Russo One", sans-serif;
+}
+.order__history {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.order__history__labels {
+  display: flex;
+  font-size: 2.5rem;
+}
+.order__history__date__label {
+  margin-right: 8.25rem;
+}
+.order__history__ctn {
+  display: flex;
+  flex-direction: column;
+}
+.order__history__order {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+.order__history__order__date {
+  margin-right: 3rem;
+}
+
+@media (max-width: 405px) {
+  .order__history__ctn {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 350px) {
+  .order__history__labels {
+    font-size: 2rem;
+  }
+}
