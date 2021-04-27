@@ -34,7 +34,6 @@ router.get("/:id", auth, async (req, res, next) => {
 
   const token = req.headers.token;
   const decoded = jwt_decode(token);
-  console.log("DECODED TOKEN: ", decoded);
   if (decoded.user !== id) {
     return next(new ClientError("Restricted access", 403));
   }

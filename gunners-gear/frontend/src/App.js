@@ -19,22 +19,20 @@ import Vintage from "./pages/Vintage/Vintage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
 import Register from "./pages/Register/Register";
+import Orders from "./pages/Orders/Orders";
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [showProduct, setShowProduct] = useState(false);
   const [itemDetails, setItemDetails] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState();
-  const [id, setId] = useState();
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.token && userData.id) {
       setIsLoggedIn(true);
       setToken(userData.token);
-      setId(userData.id);
-      console.log("USER IS STILL LOGGED IN!!!");
     }
   }, []);
 
@@ -124,10 +122,14 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
+              setCart={setCart}
             />
           </Route>
           <Route path="/account" exact>
             <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
         <Redirect to="/" />
@@ -168,10 +170,14 @@ const App = () => {
               cart={cart}
               removeItem={removeItemFromCart}
               updateQuantity={updateQuantity}
+              setCart={setCart}
             />
           </Route>
           <Route path="/account" exact>
             <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
         <Redirect to="/" />

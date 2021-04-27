@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
 import { useHistory } from "react-router-dom";
 
@@ -86,8 +87,11 @@ const Register = (props) => {
 
   if (viewLogin && props.isLoggedIn) {
     view = (
-      <div className="logout__container">
-        <p className="logout__header">Click the button below to logout</p>
+      <div className="account__container">
+        <p className="orders__message">See your order history</p>
+        <div className="orders__button">
+          <Link to="/orders">Past Orders</Link>
+        </div>
         <div onClick={logout} className="logout__button">
           Logout
         </div>
