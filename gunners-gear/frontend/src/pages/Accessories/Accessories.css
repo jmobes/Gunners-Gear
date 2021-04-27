@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 3rem;
-  padding: 5rem;
+  padding: 3rem;
 }
 .accessories__card {
   display: grid;

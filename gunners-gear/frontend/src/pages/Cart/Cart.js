@@ -38,10 +38,9 @@ const Cart = (props) => {
         fetch(`http://localhost:5000/api/products/${product.item}`)
           .then((res) => res.json())
           .then((prod) => {
-            console.log("PRODUCT: ", prod);
             setProducts((oldArr) => [...oldArr, prod]);
           })
-          .catch((err) => console.error(err));
+          .catch((err) => setError(err.message));
       });
     }
   }, []);
@@ -108,9 +107,9 @@ const Cart = (props) => {
         options
       );
       const data = await response.json();
-      console.log(data);
       setProducts([]);
       props.setCart([]);
+      setPlaceOrder(true);
     } catch (err) {
       setError(err.message);
     }

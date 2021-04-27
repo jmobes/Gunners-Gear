@@ -14,7 +14,6 @@ function auth(req, res, next) {
     req.user = verified.user;
     next();
   } catch (err) {
-    console.error(err);
     return next(new ClientError("unauthorized", 401));
   }
 }

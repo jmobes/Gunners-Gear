@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 3rem;
-  padding: 2rem 5rem;
+  padding: 2rem 3rem;
 }
 .checkout__card {
   display: grid;
@@ -215,11 +215,8 @@
   font-size: 2rem;
 }
 .order__placed p span {
-  border-bottom: 5px solid var(--color-red-primary);
-  cursor: pointer;
-}
-.order__placed p span:hover {
   color: var(--color-red-primary);
+  cursor: pointer;
 }
 
 @media (max-width: 775px) {
