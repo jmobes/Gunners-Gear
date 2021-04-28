@@ -74,6 +74,7 @@
   font-size: 2rem;
   color: red;
   margin-top: 1.5rem;
+  text-align: center;
 }
 
 .signup__title {
@@ -135,6 +136,7 @@
   font-size: 2rem;
   color: red;
   margin-top: 1.5rem;
+  text-align: center;
 }
 .account__container {
   display: flex;

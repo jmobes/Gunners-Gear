@@ -39,7 +39,7 @@ const Orders = () => {
             <p className="order__history__date__label">Date</p>
             <p className="order__history__order__number">Order Number</p>
           </div>
-          {orders ? (
+          {orders && orders.length ? (
             <div className="order__history__ctn">
               {orders.map((order) => {
                 return (
@@ -53,7 +53,11 @@ const Orders = () => {
               })}
             </div>
           ) : (
-            <p>There are no orders associated with this account</p>
+            <p className="order__error">
+              {error
+                ? `${error}`
+                : `There are no orders associated with this account`}
+            </p>
           )}
         </div>
       )}

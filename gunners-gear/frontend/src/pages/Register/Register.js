@@ -36,6 +36,11 @@ const Register = (props) => {
         setIsLoading(false);
         return;
       }
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ id: data.user, token: data.token })
+      );
+      props.setIsLoggedIn(true);
       history.push("/");
       setIsLoading(false);
     } catch (err) {
