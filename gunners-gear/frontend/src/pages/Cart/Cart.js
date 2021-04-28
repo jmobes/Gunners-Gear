@@ -35,7 +35,7 @@ const Cart = (props) => {
     setProducts([]);
     if (props.cart.length) {
       props.cart.forEach((product) => {
-        fetch(`http://localhost:5000/api/products/${product.item}`)
+        fetch(`/api/products/${product.item}`)
           .then((res) => res.json())
           .then((prod) => {
             setProducts((oldArr) => [...oldArr, prod]);
@@ -102,10 +102,7 @@ const Cart = (props) => {
         headers: { token: token, "Content-Type": "application/json" },
         body: JSON.stringify({ products: products }),
       };
-      const response = await fetch(
-        `http://localhost:5000/api/user/orders/${id}`,
-        options
-      );
+      const response = await fetch(`/api/user/orders/${id}`, options);
       const data = await response.json();
       setProducts([]);
       props.setCart([]);
@@ -281,7 +278,7 @@ const Cart = (props) => {
                 <div key={product._id} className="checkout__card">
                   <img
                     className="checkout__card__image"
-                    src={`http://localhost:5000${product.image}`}
+                    src={`${product.image}`}
                     alt={product.title}
                   ></img>
                   <div className="checkout__card__details">

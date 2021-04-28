@@ -12,9 +12,7 @@ const Orders = () => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:5000/api/user/orders/${userData.id}`
-        );
+        const response = await fetch(`/api/user/orders/${userData.id}`);
         const data = await response.json();
         setOrders(data.orders);
       } catch (err) {

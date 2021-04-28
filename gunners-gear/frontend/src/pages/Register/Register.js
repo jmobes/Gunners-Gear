@@ -25,7 +25,7 @@ const Register = (props) => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5000/api/users", {
+      const response = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: signupEmail, password: signupPassword }),
@@ -53,7 +53,7 @@ const Register = (props) => {
     setIsLoading(true);
     setLoginError("");
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
+      const response = await fetch("/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -90,7 +90,7 @@ const Register = (props) => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
+      const response = await fetch("/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, password: password }),
