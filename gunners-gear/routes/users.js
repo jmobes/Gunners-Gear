@@ -19,12 +19,7 @@ router.get("/", auth, async (req, res, next) => {
 });
 
 router.get("/logout", (req, res, next) => {
-  res
-    .cookie("token", "", {
-      httpOnly: true,
-      expires: new Date(0),
-    })
-    .send("logged out");
+  res.status(200).send("logged out");
 });
 
 router.get("/:id", auth, async (req, res, next) => {

@@ -35,6 +35,10 @@
 .order__history__order__date {
   margin-right: 3rem;
 }
+.order__error {
+  margin-top: 3rem;
+  text-align: center;
+}
 
 @media (max-width: 405px) {
   .order__history__ctn {

@@ -6,6 +6,7 @@ const products = require("./routes/products.js");
 const users = require("./routes/users");
 const orders = require("./routes/orders");
 const ClientError = require("./models/ClientError.js");
+const path = require("path");
 
 mongoose
   .connect(process.env.CONNECTION_STRING, {
@@ -43,6 +44,18 @@ app.use((error, req, res, next) => {
     error: error.message || "An unknown error occurred",
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api running");
+  });
+}
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

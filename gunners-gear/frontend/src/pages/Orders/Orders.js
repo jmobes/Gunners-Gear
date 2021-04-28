@@ -12,9 +12,7 @@ const Orders = () => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:5000/api/user/orders/${userData.id}`
-        );
+        const response = await fetch(`/api/user/orders/${userData.id}`);
         const data = await response.json();
         setOrders(data.orders);
       } catch (err) {
@@ -39,7 +37,7 @@ const Orders = () => {
             <p className="order__history__date__label">Date</p>
             <p className="order__history__order__number">Order Number</p>
           </div>
-          {orders ? (
+          {orders && orders.length ? (
             <div className="order__history__ctn">
               {orders.map((order) => {
                 return (
@@ -53,7 +51,11 @@ const Orders = () => {
               })}
             </div>
           ) : (
-            <p>There are no orders associated with this account</p>
+            <p className="order__error">
+              {error
+                ? `${error}`
+                : `There are no orders associated with this account`}
+            </p>
           )}
         </div>
       )}

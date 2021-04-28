@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const ClientError = require("../models/ClientError");
-const { Product, validate } = require("../models/product");
+const { Product, validateProduct } = require("../models/product");
+const auth = require("../middleware/auth");
+const jwt_decode = require("jwt-decode");
 
 router.get("/", async (req, res, next) => {
   let products;
@@ -57,8 +59,14 @@ router.get("/category/:category", async (req, res, next) => {
   res.status(200).send(products);
 });
 
-router.post("/", async (req, res, next) => {
-  const { error } = validate(req.body);
+router.post("/", auth, async (req, res, next) => {
+  const adminId = process.env.ADMIN_ID;
+  const token = req.headers.token;
+  const decoded = jwt_decode(token);
+  if (decoded.user !== adminId) {
+    return next(new ClientError("Restricted access", 403));
+  }
+  const { error } = validateProduct(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const { image, title, description, price, category } = req.body;

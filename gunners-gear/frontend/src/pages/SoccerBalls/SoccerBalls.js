@@ -13,9 +13,7 @@ const SoccerBalls = (props) => {
     const fetchData = async () => {
       let response, data;
       try {
-        response = await fetch(
-          "http://localhost:5000/api/products/category/balls"
-        );
+        response = await fetch("/api/products/category/balls");
         data = await response.json();
       } catch (err) {
         setError("A connection error has occurred");
@@ -34,7 +32,7 @@ const SoccerBalls = (props) => {
             <div key={product._id} className="ball__card">
               <img
                 className="ball__card__image"
-                src={`http://localhost:5000${product.image}`}
+                src={`${product.image}`}
                 alt={product.title}
               ></img>
               <div className="ball__card__details">

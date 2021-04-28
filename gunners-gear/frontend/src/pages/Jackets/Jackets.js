@@ -13,9 +13,7 @@ const Jackets = (props) => {
     const fetchProducts = async () => {
       let response, data;
       try {
-        response = await fetch(
-          "http://localhost:5000/api/products/category/jackets"
-        );
+        response = await fetch("/api/products/category/jackets");
         data = await response.json();
       } catch (err) {
         setError("A connection error has occurred");
@@ -33,7 +31,7 @@ const Jackets = (props) => {
             <div key={product._id} className="jackets__card">
               <img
                 className="jackets__card__image"
-                src={`http://localhost:5000${product.image}`}
+                src={`${product.image}`}
                 alt={product.title}
               ></img>
               <div className="jackets__card__details">
