@@ -31,6 +31,15 @@ app.use("/api/products", products);
 app.use("/api/users", users);
 app.use("/api/user/orders", orders);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+  console.log(path.join(__dirname, "frontend/build"));
+}
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
+});
+
 app.use((req, res, next) => {
   const error = new ClientError("Could not find this route", 404);
   next(error);
@@ -44,18 +53,6 @@ app.use((error, req, res, next) => {
     error: error.message || "An unknown error occurred",
   });
 });
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend/build/index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("Api running");
-  });
-}
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

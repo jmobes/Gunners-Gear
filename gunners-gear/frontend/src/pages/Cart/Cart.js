@@ -15,7 +15,7 @@ const Cart = (props) => {
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [expirationMonth, setExpirationMonth] = useState("1");
+  const [expirationMonth, setExpirationMonth] = useState("");
   const [expirationYear, setExpirationYear] = useState("2021");
   const [cvv, setCvv] = useState("");
   const [placeOrder, setPlaceOrder] = useState(false);
@@ -43,6 +43,9 @@ const Cart = (props) => {
           .catch((err) => setError(err.message));
       });
     }
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    setExpirationMonth(month);
   }, []);
 
   useEffect(() => {
@@ -91,8 +94,12 @@ const Cart = (props) => {
       return;
     }
     if (!token) {
-      setError("You need to log in before placing an order");
-      history.push("/account");
+      setError(
+        "You need to log in before placing an order. Redirecting to login page..."
+      );
+      setTimeout(() => {
+        history.push("/account");
+      }, 4000);
       return;
     }
 

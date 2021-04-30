@@ -36,12 +36,7 @@ const Register = (props) => {
         setIsLoading(false);
         return;
       }
-      localStorage.setItem(
-        "userData",
-        JSON.stringify({ id: data.user, token: data.token })
-      );
-      props.setIsLoggedIn(true);
-      history.push("/");
+      setViewLogin(true);
       setIsLoading(false);
     } catch (err) {
       setSignupError("Server error, try again later");
@@ -71,7 +66,7 @@ const Register = (props) => {
         "userData",
         JSON.stringify({ id: data.user, token: data.token })
       );
-      history.goBack();
+      history.push("/");
       setIsLoading(false);
       props.setIsLoggedIn(true);
     } catch (err) {
@@ -105,7 +100,7 @@ const Register = (props) => {
         "userData",
         JSON.stringify({ id: data.user, token: data.token })
       );
-      history.goBack();
+      history.push("/");
       setIsLoading(false);
       props.setIsLoggedIn(true);
     } catch (err) {

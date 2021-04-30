@@ -32,7 +32,7 @@ const Jersey = (props) => {
             <div key={product._id} className="jersey__card">
               <img
                 className="jersey__card__image"
-                src={`/${product.image}`}
+                src={`${product.image}`}
                 alt={product.title}
               ></img>
               <div className="jersey__card__details">

@@ -8,7 +8,6 @@ import {
 
 import FrontPage from "./pages/FrontPage/FrontPage";
 import Header from "./shared/components/Header/Header";
-import Footer from "./shared/components/Footer/Footer";
 import Jerseys from "./pages/Jerseys/Jerseys";
 import Players from "./pages/Players/Players";
 import Shorts from "./pages/Shorts/Shorts";
@@ -133,7 +132,6 @@ const App = () => {
           </Route>
         </Switch>
         <Redirect to="/" />
-        <Footer />
       </Router>
     );
   } else {
@@ -181,7 +179,6 @@ const App = () => {
           </Route>
         </Switch>
         <Redirect to="/" />
-        <Footer />
       </Router>
     );
   }
