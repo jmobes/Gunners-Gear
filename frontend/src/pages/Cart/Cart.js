@@ -172,7 +172,11 @@ const Cart = (props) => {
                     type="text"
                     value={zip}
                     onChange={(e) => {
-                      if (isNaN(e.target.value)) {
+                      let regSpace = RegExp(/\s/);
+                      if (
+                        isNaN(e.target.value) ||
+                        regSpace.test(e.target.value)
+                      ) {
                         return;
                       }
                       setZip(e.target.value);
@@ -191,7 +195,11 @@ const Cart = (props) => {
                     type="text"
                     value={cardNumber}
                     onChange={(e) => {
-                      if (isNaN(e.target.value)) {
+                      let regSpace = new RegExp(/\s/);
+                      if (
+                        isNaN(e.target.value) ||
+                        regSpace.test(e.target.value)
+                      ) {
                         return;
                       }
                       setCardNumber(e.target.value);
@@ -236,7 +244,11 @@ const Cart = (props) => {
                     type="text"
                     value={cvv}
                     onChange={(e) => {
-                      if (isNaN(e.target.value)) {
+                      let regSpace = new RegExp(/\s/);
+                      if (
+                        isNaN(e.target.value) ||
+                        regSpace.test(e.target.value)
+                      ) {
                         return;
                       }
                       setCvv(e.target.value);
