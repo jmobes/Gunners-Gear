@@ -131,6 +131,7 @@
   margin-right: 2rem;
   padding: 3rem;
   flex-basis: 50%;
+  align-self: center;
 }
 .story__text--header {
   font-size: 8rem;
